@@ -49,7 +49,7 @@ namespace Assets.Resources.Scripts
 
         private void CreateRoot(Vector2 position, float rotateBy)
         {
-             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("Root"), position, Quaternion.identity);
+             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("/prefabs/Root"), position, Quaternion.identity);
              lastPlacedRootPosition = root.transform.position;
         }
     }

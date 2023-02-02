@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: ff4e495f008b02046be70e9a10156fb8
+=======
+guid: 2574f9f6de52ef74ebc85213ddba56be
+>>>>>>> fixed root prefab path
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

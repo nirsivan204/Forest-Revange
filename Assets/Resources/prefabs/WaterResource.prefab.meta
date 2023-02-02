@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 0851b3f091f9d0843abe665f247f05b4
+=======
+guid: edd50968db0dd6f46b7f080f880c633f
+>>>>>>> fixed root prefab path
 PrefabImporter:
   externalObjects: {}
   userData: 
