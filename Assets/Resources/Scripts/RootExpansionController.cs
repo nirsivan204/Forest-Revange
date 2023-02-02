@@ -5,12 +5,26 @@ namespace Assets.Resources.Scripts
 {
     public class RootExpansionController : MonoBehaviour
     {
+        public static RootExpansionController Instance;
+        
         private const int maxExpansionDistance = 5;
         
         private List<RootAgent> roots;
         [SerializeField] private Camera mainCamera;
 
-        // Update is called once per frame
+        void Awake()
+        {
+            if (Instance)
+            {
+                Destroy(this);
+                return;
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
+        
         void Update()
         {
             if (Input.GetMouseButton(0))
