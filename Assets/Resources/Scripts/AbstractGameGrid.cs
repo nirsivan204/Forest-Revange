@@ -29,7 +29,7 @@ public abstract class AbstractGameGrid : MonoBehaviour
 
     public void SetTile(int x, int y, TilesTypes type)
     {
-
+        GameBoard[x, y] = type;
     }
 
 }
