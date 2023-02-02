@@ -13,18 +13,8 @@ public class RootAgent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    public void SetGoal(Vector3 goal)
     {
-        if (Input.GetMouseButton(0))
-        {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                navMeshAgent.SetDestination(hit.point);
-            }
-
-        }
+        navMeshAgent.SetDestination(goal);
     }
 }
