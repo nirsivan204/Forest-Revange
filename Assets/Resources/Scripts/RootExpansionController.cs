@@ -6,10 +6,13 @@ namespace Assets.Resources.Scripts
     public class RootExpansionController : MonoBehaviour
     {
         public static RootExpansionController Instance;
-        
+
+        private const int createRootMinimumDistance = 1;
         private const int maxExpansionDistance = 5;
+        Vector2 lastPlacedRootPosition;
         
-        private List<RootAgent> roots;
+        [SerializeField] private List<RootAgent> roots;
+        [SerializeField] private RootAgent tree;
         [SerializeField] private Camera mainCamera;
 
         void Awake()
@@ -22,37 +25,32 @@ namespace Assets.Resources.Scripts
             else
             {
                 Instance = this;
+                //roots = FindObjectOfType(TreeManager).getTrees();
             }
         }
         
         void Update()
         {
-            if (Input.GetMouseButton(0))
+            
+        }
+
+        public void UpdateRoot(Vector2 position)
+        {
+            float distance = Vector2.Distance(position, tree.transform.position);
+            if (distance > maxExpansionDistance) return;
+
+            distance = Vector2.Distance(position, lastPlacedRootPosition);
+            if (distance < createRootMinimumDistance)
             {
-                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    RootAgent closestRoot = null;
-                    float distance;
-                    float minDistance = 1000000;
-
-                    // find closest root to mouse click position
-                    foreach (var root in roots)
-                    {
-                        distance = Vector3.Distance(root.transform.position, hit.point);
-                        if (distance < minDistance)
-                        {
-                            minDistance = distance;
-                            closestRoot = root;
-                        }
-                    }
-                    
-                    if(minDistance<maxExpansionDistance)
-                        closestRoot?.SetDestination(hit.point);
-                }
+                float rotation = Vector2.Angle(lastPlacedRootPosition, position);
+                CreateRoot(position, rotation);
             }
+        }
+
+        private void CreateRoot(Vector2 position, float rotateBy)
+        {
+             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("Root"), position, Quaternion.identity);
+             lastPlacedRootPosition = root.transform.position;
         }
     }
 }
