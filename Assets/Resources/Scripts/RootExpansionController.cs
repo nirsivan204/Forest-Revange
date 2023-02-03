@@ -28,9 +28,18 @@ namespace Assets.Resources.Scripts
                 //roots = FindObjectOfType(TreeManager).getTrees();
             }
         }
+
+        void Start()
+        {
+            lastPlacedRootPosition = tree.transform.position;
+        }
         
         void Update()
         {
+            if (MouseInputManager.Instance.isDrawingLine)
+            {
+                UpdateRoot(MouseInputManager.Instance.hitPoint);    
+            }
             
         }
 
@@ -49,7 +58,7 @@ namespace Assets.Resources.Scripts
 
         private void CreateRoot(Vector2 position, float rotateBy)
         {
-             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("/prefabs/Root"), position, Quaternion.identity);
+             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), position, Quaternion.identity);
              lastPlacedRootPosition = root.transform.position;
         }
     }

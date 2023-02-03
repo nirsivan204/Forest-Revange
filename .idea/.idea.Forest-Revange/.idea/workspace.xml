@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87b39aa3-306a-4aa1-b468-590c8f26f598" name="Changes" comment="Changed RootExpansionController to get position from other scripts and instantiate roots" />
+    <list default="true" id="1ac69e21-242d-4865-8a4d-f80f8c598fbf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Forest-Revange/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Forest-Revange/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/MouseInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/MouseInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/RootExpansionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/RootExpansionController.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +20,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
