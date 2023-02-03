@@ -10,6 +10,7 @@ public class TreeEntity : MonoBehaviour
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
+    [SerializeField] private float colliderRadiusMultiplayer = 3;
 
     public event EventHandler<int> LevelChanged;
 
@@ -41,7 +42,21 @@ public class TreeEntity : MonoBehaviour
         Destroy(seedling);
         tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"),transform);
         Debug.Log("UPGRADE");
-        LevelChanged.Invoke(this, _level);
-
+        LevelChanged?.Invoke(this, _level);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, colliderRadiusMultiplayer * _level);
+        foreach (Collider collider in hitColliders)
+        {
+            TreeEntity collidedTree = collider.GetComponent<TreeEntity>();
+            if (collidedTree)
+            {
+                if (collidedTree._level == _level && collidedTree != this)
+                {
+                    Destroy(collidedTree);
+                    UpgradeTree();
+                    return;
+                }
+                
+            }
+        }
     }
 }
