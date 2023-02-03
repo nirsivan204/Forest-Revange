@@ -7,6 +7,17 @@ namespace Assets.Resources.Scripts
 {
     public class RootExpansionController : MonoBehaviour
     {
+
+        struct RootStruct{
+            public MeshFilter mesh;
+            public GameObject gameobject;
+
+            public RootStruct(GameObject gameobject,MeshFilter mesh)
+            {
+                this.mesh = mesh;
+                this.gameobject = gameobject;
+            }
+        }
         public static RootExpansionController Instance;
 
         private const float createRootMinimumDistance = 0.3f;
@@ -14,15 +25,15 @@ namespace Assets.Resources.Scripts
         Vector2 lastPlacedRootPosition;
         Vector2 treePosition;
 
-        [SerializeField] private List<RootAgent> roots;
         [SerializeField] private Camera mainCamera;
+        [SerializeField] private GameObject completeRoot;
 
         GameObject currentRoot = null;
 
         bool isUnderWorld = false;
         bool isBuildingRoot = false;
 
-        List<GameObject> rootsPositioned = new List<GameObject>();
+        List<RootStruct> rootsPositioned = new List<RootStruct>();
 
         private void OnEnable()
         {
@@ -51,11 +62,12 @@ namespace Assets.Resources.Scripts
         private void OnEndTargetUpdated(GameObject obj)
         {
             WaterResource resource = obj.GetComponent<WaterResource>();
-            if (resource && !resource.isCollected)
+            if (isBuildingRoot && resource && !resource.isCollected)
             {
-                rootsPositioned.Clear();
+                MergeRootMeshes();
                 currentRoot.GetComponentInParent<TreeEntity>().AddWater(resource.amount);
-               // ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
+                resource.isCollected = true;
+                // ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
             }
             else
             {
@@ -63,6 +75,29 @@ namespace Assets.Resources.Scripts
             }
             isBuildingRoot = false;
 
+
+        }
+
+        private void MergeRootMeshes()
+        {
+            CombineInstance[] combine = new CombineInstance[rootsPositioned.Count];
+
+            int i = 0;
+            while (i < rootsPositioned.Count)
+            {
+                combine[i].mesh = rootsPositioned[i].mesh.sharedMesh;
+                combine[i].transform = rootsPositioned[i].mesh.transform.localToWorldMatrix;
+                rootsPositioned[i].mesh.gameObject.SetActive(false);
+
+                i++;
+            }
+            Instantiate(completeRoot, transform);
+
+            completeRoot.GetComponent<MeshFilter>().mesh = new Mesh();
+            completeRoot.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+            completeRoot.SetActive(true);
+            StartCoroutine(DeletePlacedRoots());
+            
 
         }
 
@@ -162,9 +197,18 @@ namespace Assets.Resources.Scripts
         {
             for (int i = rootsPositioned.Count-1; i >= 0; i--)
             {
-                Destroy(rootsPositioned[i]);
+                try
+                {
+                    Destroy(rootsPositioned[i].gameobject);
+
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
                 yield return waitCache;
             }
+            rootsPositioned.Clear();
         }
 
         private void CreateRoot(Vector2 position, float rotateBy)
@@ -172,7 +216,12 @@ namespace Assets.Resources.Scripts
             Vector3 realPos = Vector3ToVector2(position, 0.5f);
             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity, this.transform);
             lastPlacedRootPosition = Vector3ToVector2(realPos);//root.transform.position;
-            rootsPositioned.Add(root);
+            rootsPositioned.Add(new RootStruct(root,root.GetComponentInChildren<MeshFilter>()));
+
+            if (rootsPositioned.Count > 1)
+            {
+                rootsPositioned[rootsPositioned.Count - 2].gameobject.transform.LookAt(realPos);
+            }
         }
 
         private Vector2 Vector3ToVector2(Vector3 vector)
