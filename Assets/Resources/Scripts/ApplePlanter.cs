@@ -5,7 +5,7 @@ using UnityEngine;
 public class ApplePlanter : MonoBehaviour
 {
 
-    private int timesCollided = 0;
+    public float timeForRollingOnGround = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +16,22 @@ public class ApplePlanter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(timeForRollingOnGround <= 0)
+        {
+            Vector3 spawnLocation = new Vector3(transform.position.x, 0, transform.position.z);
+            Quaternion spawnRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+            Instantiate(Resources.Load<GameObject>("prefabs/TreeParent"),spawnLocation, spawnRotation, transform.parent);
+            Destroy(transform.gameObject);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        timesCollided++;
-        Debug.Log(timesCollided);
+        if(collision.gameObject.tag == "Ground")
+        {
+            timeForRollingOnGround = timeForRollingOnGround - Time.fixedDeltaTime;
+        }
+
     }
 
 }

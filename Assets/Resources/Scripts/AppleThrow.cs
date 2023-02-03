@@ -40,7 +40,7 @@ public class AppleThrow : MonoBehaviour
             Vector3 endPoint = mouseInputManager.hitPoint;
             if (Vector3.Distance(startPoint, endPoint) > clickDistanceForThrow)
             {
-                GameObject newApple = Instantiate(apple, transform.position + new Vector3(0,5,0), transform.rotation, transform);
+                GameObject newApple = Instantiate(apple, transform.position + new Vector3(0,5,0), transform.rotation, transform.parent);
                 Vector3 dragDirection = endPoint - startPoint;
                 newApple.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), ForceMode.Impulse);
                 newApple.GetComponent<Rigidbody>().AddForce(dragDirection * -1 + new Vector3(0,dragDirection.magnitude/2,0), ForceMode.Impulse);
