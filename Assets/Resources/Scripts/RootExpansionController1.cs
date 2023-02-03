@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class RootExpansionController : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
@@ -45,4 +45,4 @@ public class RootExpansionController : MonoBehaviour
             }
         }
     }
-}
+}*/
