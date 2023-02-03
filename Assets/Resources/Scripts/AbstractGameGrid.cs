@@ -3,13 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TilesTypes
-{
-    None,
-    Water,
-    Root,
-    Tree
-}
+
 
 public abstract class AbstractGameGrid : MonoBehaviour
 {

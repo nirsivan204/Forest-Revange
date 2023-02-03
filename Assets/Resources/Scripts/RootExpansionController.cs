@@ -48,8 +48,19 @@ namespace Assets.Resources.Scripts
 
         private void OnEndTargetUpdated(GameObject obj)
         {
-            rootsPositioned.Clear();
+            ResourceEntity resource = obj.GetComponent<ResourceEntity>();
+            if (resource && !resource.isCollected)
+            {
+                rootsPositioned.Clear();
+                ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
+            }
+            else
+            {
+                StartCoroutine(DeletePlacedRoots());
+            }
             isBuildingRoot = false;
+
+
         }
 
         private void OnReleaseClick()

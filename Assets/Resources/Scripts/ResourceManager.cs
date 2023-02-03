@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public static class ResourceManager
 {
     static float _waterAmount;
@@ -6,6 +8,20 @@ public static class ResourceManager
     
     public static float WaterAmount { get => _waterAmount; set => _waterAmount = value; }
    //public static int TreesAmount { get => _treesAmount; set => _treesAmount = value; }
+
+    public static void Collect(ResourceEntity resource)
+    {
+        switch (resource.type)
+        {
+            case ResourceType.Water:
+                AddWater(resource.amount);
+                resource.isCollected = true;
+                break;
+            default:
+                break;
+        }
+    }
+
 
     public static float GetWaterAmount()
     {
