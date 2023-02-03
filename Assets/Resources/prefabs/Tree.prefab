@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickDistanceForThrow: 2
   pullingTree: 0
+  maxThrowMagnitute: 3
 --- !u!136 &2491248014496218832
 CapsuleCollider:
   m_ObjectHideFlags: 0
