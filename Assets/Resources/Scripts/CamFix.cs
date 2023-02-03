@@ -14,6 +14,9 @@ public class CamFix : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 dragOrigin = Vector3.zero;
 
+    [SerializeField]
+    int treeSize;
+
     void Start()
     {
         targetPosition = transform.position;
@@ -30,6 +33,7 @@ public class CamFix : MonoBehaviour
         {
             Drag();
         }
+        ZoomCam(treeSize);
     }
 
     void LateUpdate()
@@ -53,8 +57,8 @@ public class CamFix : MonoBehaviour
     private void Drag()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Camera.main.transform.position;
-            targetPosition.x = dragOrigin.x - difference.x;
-            targetPosition.z = dragOrigin.z - difference.z;    
+        targetPosition.x = dragOrigin.x - difference.x;
+        targetPosition.z = dragOrigin.z - difference.z;
     }
     private void MoveToTarget(Vector3 target)
     {
@@ -66,5 +70,14 @@ public class CamFix : MonoBehaviour
 
         Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * Time.deltaTime);
         transform.localPosition = nextStep;
+<<<<<<< Updated upstream
+=======
+    }
+
+    private void ZoomCam(int treeSize)
+    {
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 1, Mathf.Infinity);
+        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, treeSize * 5, 2 * Time.deltaTime);
+>>>>>>> Stashed changes
     }
 }
