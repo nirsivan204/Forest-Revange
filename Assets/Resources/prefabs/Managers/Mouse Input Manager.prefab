@@ -48,7 +48,8 @@ MonoBehaviour:
   nameOfGameObjectToRespondTo: Tree
   isDrawingLine: 0
   hitPoint: {x: 0, y: 0, z: 0}
-  targetHeight: 5
+  underWorldHeight: -1
+  upperWorldHeight: 0
   target: {fileID: 0}
 --- !u!120 &2036224875277581518
 LineRenderer:
