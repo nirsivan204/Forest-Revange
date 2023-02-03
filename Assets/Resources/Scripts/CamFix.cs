@@ -8,17 +8,20 @@ public class CamFix : MonoBehaviour
     [SerializeField] float cameraMoveSpeed = 4f;
     [SerializeField] GameObject _upperWorld;
     [SerializeField] GameObject _underWorld;
+    
     float _upperWorldHeight;
     float _underWorldHeight;
 
     private Vector3 targetPosition;
     private Vector3 dragOrigin = Vector3.zero;
 
-    [SerializeField]
-    int treeSize;
-
+    [Header("Zoom")]
+    [SerializeField]int treeSize = 1;
+    [SerializeField] int ZoomSize;
+    [SerializeField] int zoomSpeed = 2;
     void Start()
     {
+        treeSize = 1;
         targetPosition = transform.position;
         _upperWorldHeight = offset.y + _upperWorld.transform.position.y;
         _underWorldHeight = offset.y + _underWorld.transform.position.y;
@@ -69,15 +72,11 @@ public class CamFix : MonoBehaviour
         endPos.z += offset.z;
 
         Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * Time.deltaTime);
-        transform.localPosition = nextStep;
-<<<<<<< Updated upstream
-=======
+        transform.position = nextStep;
     }
-
     private void ZoomCam(int treeSize)
     {
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 1, Mathf.Infinity);
-        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, treeSize * 5, 2 * Time.deltaTime);
->>>>>>> Stashed changes
+        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, treeSize * ZoomSize, zoomSpeed * Time.deltaTime);
     }
 }
