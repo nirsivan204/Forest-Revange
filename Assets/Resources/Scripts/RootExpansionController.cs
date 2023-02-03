@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Resources.Scripts
-{
     public class RootExpansionController : MonoBehaviour
     {
+        public static RootExpansionController Instance;
 
         struct RootStruct{
             public MeshFilter mesh;
@@ -18,7 +17,6 @@ namespace Assets.Resources.Scripts
                 this.gameobject = gameobject;
             }
         }
-        public static RootExpansionController Instance;
 
         private const float createRootMinimumDistance = 0.3f;
         private const int maxExpansionDistance = 5;
@@ -187,8 +185,7 @@ namespace Assets.Resources.Scripts
             distance = Vector2.Distance(position, lastPlacedRootPosition);
             if (distance > createRootMinimumDistance)
             {
-                float rotation = Vector2.Angle(lastPlacedRootPosition, position);
-                CreateRoot(position, rotation);
+                CreateRoot(position);
             }
         }
         WaitForSeconds waitCache = new WaitForSeconds(0.05f);
@@ -211,7 +208,7 @@ namespace Assets.Resources.Scripts
             rootsPositioned.Clear();
         }
 
-        private void CreateRoot(Vector2 position, float rotateBy)
+        private void CreateRoot(Vector2 position)
         {
             Vector3 realPos = Vector3ToVector2(position, -1f);
             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity, this.transform);
@@ -234,7 +231,20 @@ namespace Assets.Resources.Scripts
             return new Vector3(vector.x,height, vector.y);
 
         }
-    }
+
+    public void MergeRoots(Vector3 posA,Vector3 posB)
+    {
+        float distance = Vector3.Distance(posA, posB);
+        Vector2 diraction = Vector3ToVector2(posB - posA).normalized;
+        for (int i = 0; i < distance/ createRootMinimumDistance;i++)
+        {
+            CreateRoot(Vector3ToVector2(posA) + diraction * createRootMinimumDistance*i);
+        }
+        rootsPositioned.Clear();
+        isBuildingRoot = false;
+        currentRoot = null;
+
+    }    
 }
 
 

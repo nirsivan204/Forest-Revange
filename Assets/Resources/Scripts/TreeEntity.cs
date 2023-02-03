@@ -52,12 +52,14 @@ public class TreeEntity : MonoBehaviour
         Debug.Log("colliders in sphere: " + hitColliders.Length);
         foreach (Collider collider in hitColliders)
         {
-            TreeEntity collidedTree = collider.GetComponent<TreeEntity>();
-            if (collidedTree)
+            TreeEntity collidedTree = collider.GetComponentInParent<TreeEntity>();
+            if (collidedTree && collidedTree != this)
             {
                 Debug.Log("Found tree in nearby colliders");
+
                 if (collidedTree._level == _level && collidedTree != this)
                 {
+                    RootExpansionController.Instance.MergeRoots(collidedTree.root.transform.position, this.root.transform.position);//  collidedTree.root.transform
                     Destroy(collidedTree.tree);
                     Destroy(collidedTree.gameObject);
                     UpgradeTree();
