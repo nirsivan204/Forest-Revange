@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class AppleDestruction : MonoBehaviour
 {
-    public int level;
+    public PowerType power;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +18,23 @@ public class AppleDestruction : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        string resultString = Regex.Match(collision.gameObject.name, @"\d+").Value;
-        int collisionLevel;
-        bool success = int.TryParse(resultString, out collisionLevel);
-
-        if(collisionLevel >= level)
+        string powerString = powerToString();
+        if(collision.gameObject.name.IndexOf(powerString) != -1)
         {
             // TODO: destruct the collision object
+        }
+    }
+
+    private string powerToString() {
+        switch (power) {
+            case PowerType.Gas:
+                return "gas";
+            case PowerType.Sewerage:
+                return "sewerage";
+            case PowerType.Electric:
+                return "gas";
+            default:
+                return "nothing";
         }
     }
 }

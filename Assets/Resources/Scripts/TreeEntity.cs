@@ -3,10 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PowerType
+{
+    NoPower,
+    Gas,
+    Sewerage,
+    Electric,
+}
+
 public class TreeEntity : MonoBehaviour
 {
     float _connectedWaterAmount = 0;
     int _level = 0;
+    PowerType power  = PowerType.NoPower;
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
@@ -51,9 +60,9 @@ public class TreeEntity : MonoBehaviour
         LevelChanged?.Invoke(this, _level);
     }
 
-    public int getLevel()
+    public PowerType getPower()
     {
-        return _level;
+        return power;
     }
 
 }

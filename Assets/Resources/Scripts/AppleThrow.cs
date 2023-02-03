@@ -46,7 +46,7 @@ public class AppleThrow : MonoBehaviour
                 Vector3 dragDirection = Vector3.ClampMagnitude(endPoint - startPoint, maxThrowMagnitute);
                 newApple.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), ForceMode.Impulse);
                 newApple.GetComponent<Rigidbody>().AddForce(dragDirection * -1 + new Vector3(0,dragDirection.magnitude/2,0), ForceMode.Impulse);
-                newApple.GetComponent<AppleDestruction>().level = transform.GetComponent<TreeEntity>().getLevel();
+                newApple.GetComponent<AppleDestruction>().power = transform.GetComponent<TreeEntity>().getPower();
             }
             pullingTree = false;
         }
