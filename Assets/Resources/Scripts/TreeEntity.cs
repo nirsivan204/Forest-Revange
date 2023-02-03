@@ -11,6 +11,8 @@ public class TreeEntity : MonoBehaviour
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
 
+    public event EventHandler<int> LevelChanged;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,7 @@ public class TreeEntity : MonoBehaviour
         Destroy(seedling);
         tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"),transform);
         Debug.Log("UPGRADE");
+        LevelChanged.Invoke(this, _level);
 
     }
 }
