@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1ac69e21-242d-4865-8a4d-f80f8c598fbf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Forest-Revange/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Forest-Revange/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/MouseInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/MouseInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/RootExpansionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/RootExpansionController.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="fdfd994d122fad2793f728e96c7bd9104c1d5fd0" />
+      </map>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LCRM0odlt2ESvR3jJqdzWz39wL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="87b39aa3-306a-4aa1-b468-590c8f26f598" name="Changes" comment="" />
+      <created>1675373033115</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675373033115</updated>
+      <workItem from="1675373042398" duration="1562000" />
+      <workItem from="1675374660010" duration="88000" />
+      <workItem from="1675374807449" duration="4260000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added start of rootagent script and some files for rider solution (.idea)">
+      <created>1675373844103</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675373844103</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added root expansion controller">
+      <created>1675374436211</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675374436211</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added .idea (for rider) and misc files">
+      <created>1675376377411</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675376377411</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added root agent and root expansion controller scripts">
+      <created>1675376401540</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675376401540</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Made root expansion controller singleton">
+      <created>1675376524503</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675376524503</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Changed RootExpansionController to get position from other scripts and instantiate roots">
+      <created>1675380222957</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675380222957</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added start of rootagent script and some files for rider solution (.idea)" />
+    <MESSAGE value="Added root expansion controller" />
+    <MESSAGE value="Added .idea (for rider) and misc files" />
+    <MESSAGE value="Added root agent and root expansion controller scripts" />
+    <MESSAGE value="Made root expansion controller singleton" />
+    <MESSAGE value="Changed RootExpansionController to get position from other scripts and instantiate roots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed RootExpansionController to get position from other scripts and instantiate roots" />
+  </component>
+</project>

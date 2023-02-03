@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MouseInputManager : MonoBehaviour
 {
+    public static MouseInputManager Instance;
     public string nameOfGameObjectToRespondTo = "";
 
     private LineRenderer lineRenderer;
@@ -15,6 +16,19 @@ public class MouseInputManager : MonoBehaviour
     public float targetHeight = 5;
 
     public GameObject target;
+
+    void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
