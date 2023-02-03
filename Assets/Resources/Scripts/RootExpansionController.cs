@@ -7,7 +7,7 @@ namespace Assets.Resources.Scripts
     {
         public static RootExpansionController Instance;
 
-        private const int createRootMinimumDistance = 1;
+        private const float createRootMinimumDistance = 0.3f;
         private const int maxExpansionDistance = 5;
         Vector2 lastPlacedRootPosition;
         Vector2 treePosition;
@@ -32,7 +32,7 @@ namespace Assets.Resources.Scripts
 
         void Start()
         {
-            treePosition = new Vector2(tree.transform.position.x, tree.transform.position.z);
+            treePosition = Vector3ToVector2(tree.transform.position);// new Vector2(tree.transform.position.x, tree.transform.position.z);
             lastPlacedRootPosition = treePosition;
             Debug.Log(lastPlacedRootPosition);
         }
@@ -41,7 +41,7 @@ namespace Assets.Resources.Scripts
         {
             if (MouseInputManager.Instance.isDrawingLine)
             {
-                Vector2 pos = new Vector2(MouseInputManager.Instance.hitPoint.x, MouseInputManager.Instance.hitPoint.z);
+                Vector2 pos = Vector3ToVector2(MouseInputManager.Instance.hitPoint);// new Vector2(MouseInputManager.Instance.hitPoint.x, MouseInputManager.Instance.hitPoint.z);
                 UpdateRoot(pos);
                 Debug.Log(pos);
             }
@@ -63,9 +63,20 @@ namespace Assets.Resources.Scripts
 
         private void CreateRoot(Vector2 position, float rotateBy)
         {
-            Vector3 realPos = new Vector3(position.x, 3.45f, position.y);
-             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity);
-             lastPlacedRootPosition = root.transform.position;
+            Vector3 realPos = Vector3ToVector2(position, 3.5f);
+            GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity);
+            lastPlacedRootPosition = Vector3ToVector2(realPos);//root.transform.position;
+        }
+
+        private Vector2 Vector3ToVector2(Vector3 vector)
+        {
+            return new Vector2(vector.x, vector.z);
+        }
+
+        private Vector3 Vector3ToVector2(Vector2 vector, float height)
+        {
+            return new Vector3(vector.x,height, vector.y);
+
         }
     }
 }
