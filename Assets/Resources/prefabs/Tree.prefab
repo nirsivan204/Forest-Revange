@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7af92852565424b8ab873c1b8943ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickDistanceForThrow: 1
+  clickDistanceForThrow: 2
   pullingTree: 0
 --- !u!136 &2491248014496218832
 CapsuleCollider:
