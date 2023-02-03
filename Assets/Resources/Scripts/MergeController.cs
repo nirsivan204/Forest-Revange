@@ -43,11 +43,10 @@ public class MergeController
                 foreach(MergeableItem j in qualifyForMerge) {
                     j.notifyMerge();
                 }
-                // TODO: todo: calc middle location
-                Vector3 midPosition = Lerp3(qualifyForMerge[0].getPosition(),
-                    qualifyForMerge[1].getPosition(),
-                    qualifyForMerge[2].getPosition(),
-                    0.5f);
+                // Vector3 midPosition = Lerp3(qualifyForMerge[0].getPosition(),
+                //     qualifyForMerge[1].getPosition(),
+                //     qualifyForMerge[2].getPosition(),
+                //     0.5f);
                 this.CreateNewItem(triggingItem.getPosition(), triggingItem.getSize() + 1);
                 return;
             }
