@@ -67,6 +67,6 @@ public class CamFix : MonoBehaviour
         endPos.z += offset.z;
 
         Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * timeOffset * Time.deltaTime);
-        transform.position = targetPosition;
+        transform.position = nextStep;
     }
 }
