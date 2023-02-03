@@ -30,7 +30,7 @@ public class TreeEntity : MonoBehaviour
     public void AddWater(float amount)
     {
         _connectedWaterAmount += amount;
-        if(_level==0 && amount > Params.WaterToGrow)
+        if(_level==0 && _connectedWaterAmount >= Params.WaterToGrow)
         {
             UpgradeTree();
         }
@@ -69,4 +69,10 @@ public class TreeEntity : MonoBehaviour
             }
         }
     }
+
+    public int getLevel()
+    {
+        return _level;
+    }
+
 }
