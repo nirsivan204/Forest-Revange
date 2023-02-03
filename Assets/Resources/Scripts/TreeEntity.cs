@@ -67,4 +67,10 @@ public class TreeEntity : MonoBehaviour
             }
         }
     }
+
+    public int getLevel()
+    {
+        return _level;
+    }
+
 }
