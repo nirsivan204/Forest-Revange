@@ -13,7 +13,7 @@ namespace Assets.Resources.Scripts
         Vector2 treePosition;
 
         [SerializeField] private List<RootAgent> roots;
-        [SerializeField] private RootAgent tree;
+        [SerializeField] private GameObject tree;
         [SerializeField] private Camera mainCamera;
 
         void Awake()
@@ -63,7 +63,7 @@ namespace Assets.Resources.Scripts
 
         private void CreateRoot(Vector2 position, float rotateBy)
         {
-            Vector3 realPos = new Vector3(position.x, 3.7f, position.y);
+            Vector3 realPos = new Vector3(position.x, 3.45f, position.y);
              GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity);
              lastPlacedRootPosition = root.transform.position;
         }
