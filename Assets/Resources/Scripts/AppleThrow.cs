@@ -14,6 +14,8 @@ public class AppleThrow : MonoBehaviour
 
     private GameObject apple;
 
+    public float maxThrowMagnitute = 2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +43,7 @@ public class AppleThrow : MonoBehaviour
             if (Vector3.Distance(startPoint, endPoint) > clickDistanceForThrow)
             {
                 GameObject newApple = Instantiate(apple, transform.position + new Vector3(0,5,0), transform.rotation, transform.parent);
-                Vector3 dragDirection = endPoint - startPoint;
+                Vector3 dragDirection = Vector3.ClampMagnitude(endPoint - startPoint, maxThrowMagnitute);
                 newApple.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), ForceMode.Impulse);
                 newApple.GetComponent<Rigidbody>().AddForce(dragDirection * -1 + new Vector3(0,dragDirection.magnitude/2,0), ForceMode.Impulse);
             }
