@@ -10,7 +10,8 @@ namespace Assets.Resources.Scripts
         private const int createRootMinimumDistance = 1;
         private const int maxExpansionDistance = 5;
         Vector2 lastPlacedRootPosition;
-        
+        Vector2 treePosition;
+
         [SerializeField] private List<RootAgent> roots;
         [SerializeField] private RootAgent tree;
         [SerializeField] private Camera mainCamera;
@@ -31,25 +32,29 @@ namespace Assets.Resources.Scripts
 
         void Start()
         {
-            lastPlacedRootPosition = tree.transform.position;
+            treePosition = new Vector2(tree.transform.position.x, tree.transform.position.z);
+            lastPlacedRootPosition = treePosition;
+            Debug.Log(lastPlacedRootPosition);
         }
         
         void Update()
         {
             if (MouseInputManager.Instance.isDrawingLine)
             {
-                UpdateRoot(MouseInputManager.Instance.hitPoint);    
+                Vector2 pos = new Vector2(MouseInputManager.Instance.hitPoint.x, MouseInputManager.Instance.hitPoint.z);
+                UpdateRoot(pos);
+                Debug.Log(pos);
             }
             
         }
 
         public void UpdateRoot(Vector2 position)
         {
-            float distance = Vector2.Distance(position, tree.transform.position);
+            float distance = Vector2.Distance(position, treePosition);
             if (distance > maxExpansionDistance) return;
 
             distance = Vector2.Distance(position, lastPlacedRootPosition);
-            if (distance < createRootMinimumDistance)
+            if (distance > createRootMinimumDistance)
             {
                 float rotation = Vector2.Angle(lastPlacedRootPosition, position);
                 CreateRoot(position, rotation);
@@ -58,7 +63,8 @@ namespace Assets.Resources.Scripts
 
         private void CreateRoot(Vector2 position, float rotateBy)
         {
-             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), position, Quaternion.identity);
+            Vector3 realPos = new Vector3(position.x, 3.7f, position.y);
+             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity);
              lastPlacedRootPosition = root.transform.position;
         }
     }
