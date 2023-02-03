@@ -18,12 +18,15 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            _currentWorld = _currentWorld == World.Under ? World.Upper : World.Under;
-            changeWorldsEvent.Invoke(_currentWorld);
+            ChangeDimension();
         }
 
     }
 
-
+    public void ChangeDimension()
+    {
+        _currentWorld = _currentWorld == World.Under ? World.Upper : World.Under;
+        changeWorldsEvent.Invoke(_currentWorld);
+    }
 
 }

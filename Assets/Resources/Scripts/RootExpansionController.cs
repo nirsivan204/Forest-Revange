@@ -213,7 +213,7 @@ namespace Assets.Resources.Scripts
 
         private void CreateRoot(Vector2 position, float rotateBy)
         {
-            Vector3 realPos = Vector3ToVector2(position, 0.5f);
+            Vector3 realPos = Vector3ToVector2(position, -1f);
             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity, this.transform);
             lastPlacedRootPosition = Vector3ToVector2(realPos);//root.transform.position;
             rootsPositioned.Add(new RootStruct(root,root.GetComponentInChildren<MeshFilter>()));

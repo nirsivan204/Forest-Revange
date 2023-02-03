@@ -38,9 +38,10 @@ public class TreeEntity : MonoBehaviour
 
     private void UpgradeTree()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeDimension();
         _level++;
         Destroy(seedling);
-        tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"),transform);
+        tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameObject.Find("Upper World").transform);
         Debug.Log("UPGRADE");
         LevelChanged?.Invoke(this, _level);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, colliderRadiusMultiplayer * _level);

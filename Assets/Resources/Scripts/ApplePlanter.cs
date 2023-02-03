@@ -20,7 +20,7 @@ public class ApplePlanter : MonoBehaviour
         {
             Vector3 spawnLocation = new Vector3(transform.position.x, 0, transform.position.z);
             Quaternion spawnRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
-            Instantiate(Resources.Load<GameObject>("prefabs/TreeParent"),spawnLocation, spawnRotation, transform.parent);
+            Instantiate(Resources.Load<GameObject>("prefabs/TreeParent"),spawnLocation, spawnRotation, GameObject.Find("Under World").transform);
             Destroy(transform.gameObject);
         }
     }
