@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 0d2bb748fe134a24abe342360c24d7a6
+guid: b847afee8d9d5f14483a0622cb810744
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Island_MAT
-    second: {fileID: 2100000, guid: 881e3c118e066494792d6c447f410e42, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
