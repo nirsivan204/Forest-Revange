@@ -21,6 +21,7 @@ public class MouseInputManager : MonoBehaviour
     Plane _currentPlane;
 
     public GameObject target;
+
     public static Action<GameObject> StartTargetUpdatedEvent;
     public static Action<GameObject> EndTargetUpdatedEvent;
     public static Action ReleaseMouseButtonEvent;

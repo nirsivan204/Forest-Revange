@@ -17,6 +17,8 @@ namespace Assets.Resources.Scripts
         [SerializeField] private List<RootAgent> roots;
         [SerializeField] private Camera mainCamera;
 
+        GameObject currentRoot = null;
+
         bool isUnderWorld = false;
         bool isBuildingRoot = false;
 
@@ -48,11 +50,12 @@ namespace Assets.Resources.Scripts
 
         private void OnEndTargetUpdated(GameObject obj)
         {
-            ResourceEntity resource = obj.GetComponent<ResourceEntity>();
+            WaterResource resource = obj.GetComponent<WaterResource>();
             if (resource && !resource.isCollected)
             {
                 rootsPositioned.Clear();
-                ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
+                currentRoot.GetComponentInParent<TreeEntity>().AddWater(resource.amount);
+               // ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
             }
             else
             {
@@ -78,13 +81,15 @@ namespace Assets.Resources.Scripts
             //if (!isBuildingRoot && MouseInputManager.Instance.isDrawingLine && MouseInputManager.Instance.target && MouseInputManager.Instance.target.tag == "UnderTree")
             if(target.tag == "UnderTree" && isUnderWorld)
             {
-                treePosition = Vector3ToVector2(MouseInputManager.Instance.target.transform.position);// new Vector2(tree.transform.position.x, tree.transform.position.z);
+                currentRoot = target;
+                treePosition = Vector3ToVector2(currentRoot.transform.position);// new Vector2(tree.transform.position.x, tree.transform.position.z);
                 lastPlacedRootPosition = treePosition;
                 isBuildingRoot = true;
             }
             else
             {
                 isBuildingRoot = false;
+                currentRoot = null;
             }
         }
 
@@ -139,6 +144,7 @@ namespace Assets.Resources.Scripts
                 StartCoroutine(DeletePlacedRoots());
 
                 isBuildingRoot = false;
+                currentRoot = null;
                 return;
 
             }
