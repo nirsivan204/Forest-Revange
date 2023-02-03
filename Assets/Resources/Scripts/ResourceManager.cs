@@ -7,7 +7,6 @@ public static class ResourceManager
     //static int _treesAmount;
     
     public static float WaterAmount { get => _waterAmount; set => _waterAmount = value; }
-   //public static int TreesAmount { get => _treesAmount; set => _treesAmount = value; }
 
     public static void Collect(ResourceEntity resource)
     {
