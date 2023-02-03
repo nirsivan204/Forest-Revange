@@ -15,7 +15,27 @@ public class MouseInputManager : MonoBehaviour
 
     public float targetHeight = 5;
 
+    [SerializeField] float underWorldHeight = 1;
+    [SerializeField] float upperWorldHeight = 5;
+
+
     public GameObject target;
+
+    private void OnEnable()
+    {
+        GameManager.changeWorldsEvent += OnChangeWorld;
+    }
+
+    private void OnChangeWorld(World world)
+    {
+        targetHeight = world == World.Under? underWorldHeight:upperWorldHeight;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.changeWorldsEvent -= OnChangeWorld;
+
+    }
 
     void Awake()
     {

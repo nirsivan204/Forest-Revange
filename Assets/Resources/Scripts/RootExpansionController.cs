@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,25 @@ namespace Assets.Resources.Scripts
         [SerializeField] private List<RootAgent> roots;
         [SerializeField] private GameObject tree;
         [SerializeField] private Camera mainCamera;
+
+        bool isUnderWorld = false;
+
+        private void OnEnable()
+        {
+            GameManager.changeWorldsEvent += OnChangeWorld;
+        }
+
+        private void OnChangeWorld(World world)
+        {
+            isUnderWorld = world == World.Under;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.changeWorldsEvent -= OnChangeWorld;
+
+        }
+
 
         void Awake()
         {
@@ -39,7 +59,7 @@ namespace Assets.Resources.Scripts
         
         void Update()
         {
-            if (MouseInputManager.Instance.isDrawingLine)
+            if (isUnderWorld && MouseInputManager.Instance.isDrawingLine)
             {
                 Vector2 pos = Vector3ToVector2(MouseInputManager.Instance.hitPoint);// new Vector2(MouseInputManager.Instance.hitPoint.x, MouseInputManager.Instance.hitPoint.z);
                 UpdateRoot(pos);
@@ -63,8 +83,8 @@ namespace Assets.Resources.Scripts
 
         private void CreateRoot(Vector2 position, float rotateBy)
         {
-            Vector3 realPos = Vector3ToVector2(position, 3.5f);
-            GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity);
+            Vector3 realPos = Vector3ToVector2(position, 0.5f);
+            GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity, this.transform);
             lastPlacedRootPosition = Vector3ToVector2(realPos);//root.transform.position;
         }
 

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Width: 0
   Height: 0
-  _meshParent: {fileID: 0}
+  _meshParent: {fileID: 6447005503904117596}
 --- !u!1 &6447005503904117596
 GameObject:
   m_ObjectHideFlags: 0
