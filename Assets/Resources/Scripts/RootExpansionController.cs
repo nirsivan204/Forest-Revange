@@ -25,7 +25,10 @@ namespace Assets.Resources.Scripts
         private void OnEnable()
         {
             GameManager.changeWorldsEvent += OnChangeWorld;
-            MouseInputManager.targetUpdatedEvent += OnTargetUpdated;
+            MouseInputManager.StartTargetUpdatedEvent += OnSrcTargetUpdated;
+            MouseInputManager.EndTargetUpdatedEvent += OnEndTargetUpdated;
+            MouseInputManager.ReleaseMouseButtonEvent += OnReleaseClick;
+
         }
 
         private void OnChangeWorld(World world)
@@ -36,12 +39,30 @@ namespace Assets.Resources.Scripts
         private void OnDisable()
         {
             GameManager.changeWorldsEvent -= OnChangeWorld;
-            MouseInputManager.targetUpdatedEvent -= OnTargetUpdated;
+            MouseInputManager.StartTargetUpdatedEvent -= OnSrcTargetUpdated;
+            MouseInputManager.EndTargetUpdatedEvent -= OnEndTargetUpdated;
+            MouseInputManager.ReleaseMouseButtonEvent -= OnReleaseClick;
 
 
         }
 
-        private void OnTargetUpdated(GameObject target)
+        private void OnEndTargetUpdated(GameObject obj)
+        {
+            rootsPositioned.Clear();
+            isBuildingRoot = false;
+        }
+
+        private void OnReleaseClick()
+        {
+            if (isBuildingRoot)
+            {
+                StartCoroutine(DeletePlacedRoots());
+                isBuildingRoot = false;
+            }
+
+        }
+
+        private void OnSrcTargetUpdated(GameObject target)
         {
             //if (!isBuildingRoot && MouseInputManager.Instance.isDrawingLine && MouseInputManager.Instance.target && MouseInputManager.Instance.target.tag == "UnderTree")
             if(target.tag == "UnderTree" && isUnderWorld)

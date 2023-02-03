@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnderGroundWater
       objectReference: {fileID: 0}
+    - target: {fileID: 622679061862182024, guid: 874aaeaca513a3344a3d1a3d29e5c9d4, type: 3}
+      propertyPath: m_TagString
+      value: Resource
+      objectReference: {fileID: 0}
     - target: {fileID: 8086497163163888002, guid: 874aaeaca513a3344a3d1a3d29e5c9d4, type: 3}
       propertyPath: m_RootOrder
       value: 0

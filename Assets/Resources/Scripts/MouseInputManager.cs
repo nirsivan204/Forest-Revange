@@ -14,14 +14,17 @@ public class MouseInputManager : MonoBehaviour
     public bool isDrawingLine;
     public Vector3 hitPoint;
 
-    public float targetHeight = 5;
-
     [SerializeField] float underWorldHeight = 1;
     [SerializeField] float upperWorldHeight = 5;
-
+    Plane _upperWorldPlane;
+    Plane _underWorldPlane;
+    Plane _currentPlane;
 
     public GameObject target;
-    public static Action<GameObject> targetUpdatedEvent;
+    public static Action<GameObject> StartTargetUpdatedEvent;
+    public static Action<GameObject> EndTargetUpdatedEvent;
+    public static Action ReleaseMouseButtonEvent;
+
 
     private void OnEnable()
     {
@@ -30,7 +33,7 @@ public class MouseInputManager : MonoBehaviour
 
     private void OnChangeWorld(World world)
     {
-        targetHeight = world == World.Under? underWorldHeight:upperWorldHeight;
+        _currentPlane = world == World.Under? _underWorldPlane : _upperWorldPlane;
     }
 
     private void OnDisable()
@@ -54,6 +57,9 @@ public class MouseInputManager : MonoBehaviour
 
     void Start()
     {
+        _upperWorldPlane = new Plane(Vector3.up, new Vector3(0, upperWorldHeight, 0));
+        _underWorldPlane = new Plane(Vector3.up, new Vector3(0, underWorldHeight, 0));
+        _currentPlane = _upperWorldPlane;
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = false;
         target = transform.gameObject;
@@ -65,7 +71,7 @@ public class MouseInputManager : MonoBehaviour
         {
             //We now check if we where we click on the screen and project that point at a certain height for rendering.
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane plane = new Plane(Vector3.up, new Vector3(0, targetHeight, 0)); // Generating a plane at this desired rendering height.
+            Plane plane = _currentPlane; // Generating a plane at this desired rendering height.
             float distance;
             if (plane.Raycast(ray, out distance))
             {
@@ -77,38 +83,50 @@ public class MouseInputManager : MonoBehaviour
             }
         }
 
-        if (target.name != nameOfGameObjectToRespondTo)
+        if (target && target.name != nameOfGameObjectToRespondTo)
         {
             lineRenderer.enabled = false;
-        }
-
-        if (isDrawingLine)
-        {
-
         }
 
         if (Input.GetMouseButtonUp(0) && isDrawingLine)
         {
             isDrawingLine = false;
             lineRenderer.enabled = false;
+            ReleaseMouseButtonEvent?.Invoke();
         }
 
         if (isDrawingLine)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane plane = new Plane(Vector3.up, new Vector3(0, targetHeight, 0));
+            Plane plane = _currentPlane;
             float distance;
             if (plane.Raycast(ray, out distance))
             {
                 hitPoint = ray.GetPoint(distance);
                 lineRenderer.SetPosition(0, mouseClickPosition);
                 lineRenderer.SetPosition(1, hitPoint);
-                
+                GameObject currentTarget = HoverTarget(ray); // THIS IS THE IMPORTANT PART! Here we actually test what is it that we hit on the ground.
+                if (currentTarget && currentTarget.tag == "Resource")
+                {
+                    EndTargetUpdatedEvent?.Invoke(currentTarget);
+                }
+
             }
         }
     }
 
-    GameObject ClickTarget(Ray ray)
+    GameObject HoverTarget(Ray ray)
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            return hit.collider.gameObject;
+        }
+        return null;
+    }
+
+        GameObject ClickTarget(Ray ray)
     {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -117,7 +135,7 @@ public class MouseInputManager : MonoBehaviour
             mouseClickPosition = hit.point;
             isDrawingLine = true;
             lineRenderer.enabled = true;
-            targetUpdatedEvent?.Invoke(hit.collider.gameObject);
+            StartTargetUpdatedEvent?.Invoke(hit.collider.gameObject);
             return (hit.collider.gameObject);
         }
         return null;
