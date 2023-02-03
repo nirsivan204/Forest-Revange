@@ -10,6 +10,7 @@ public class TreeEntity : MonoBehaviour
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
+    [SerializeField] private float colliderRadiusMultiplayer = 5;
 
     public event EventHandler<int> LevelChanged;
 
@@ -29,7 +30,7 @@ public class TreeEntity : MonoBehaviour
     public void AddWater(float amount)
     {
         _connectedWaterAmount += amount;
-        if(_level==0 && amount > Params.WaterToGrow)
+        if(_level==0 && _connectedWaterAmount >= Params.WaterToGrow)
         {
             UpgradeTree();
         }
@@ -39,10 +40,37 @@ public class TreeEntity : MonoBehaviour
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().ChangeDimension();
         _level++;
-        Destroy(seedling);
-        tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameObject.Find("Upper World").transform);
+        Debug.Log("new level: " + _level);
+        if (_level == 1)
+        {
+            Destroy(seedling);
+            tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameObject.Find("Upper World").transform);    
+        }
         Debug.Log("UPGRADE");
         LevelChanged?.Invoke(this, _level);
-
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, colliderRadiusMultiplayer * _level);
+        Debug.Log("colliders in sphere: " + hitColliders.Length);
+        foreach (Collider collider in hitColliders)
+        {
+            TreeEntity collidedTree = collider.GetComponent<TreeEntity>();
+            if (collidedTree)
+            {
+                Debug.Log("Found tree in nearby colliders");
+                if (collidedTree._level == _level && collidedTree != this)
+                {
+                    Destroy(collidedTree.tree);
+                    Destroy(collidedTree.gameObject);
+                    UpgradeTree();
+                    return;
+                }
+                
+            }
+        }
     }
+
+    public int getLevel()
+    {
+        return _level;
+    }
+
 }
