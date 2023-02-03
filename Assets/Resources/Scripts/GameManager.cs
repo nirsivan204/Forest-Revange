@@ -9,6 +9,14 @@ public enum World
     Upper,
 }
 
+public enum ResourceTypes
+{
+    Water,
+    Gas,
+    Electricity,
+    Biov
+}
+
 public class GameManager : MonoBehaviour
 {
     public static Action<World> changeWorldsEvent;

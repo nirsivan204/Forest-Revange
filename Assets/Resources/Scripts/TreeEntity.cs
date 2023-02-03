@@ -10,9 +10,11 @@ public class TreeEntity : MonoBehaviour
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
+    internal bool connected;
+    public WaterResource connectedResource;
+    public ResourceTypes type = ResourceTypes.Water;
 
     public event EventHandler<int> LevelChanged;
-
     // Start is called before the first frame update
     void Start()
     {

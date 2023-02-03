@@ -25,15 +25,18 @@ using UnityEngine;
 
         [SerializeField] private Camera mainCamera;
         [SerializeField] private GameObject completeRoot;
+    TreeEntity _currentRootEntity;
 
-        GameObject currentRoot = null;
+    GameObject currentRoot = null;
 
         bool isUnderWorld = false;
         bool isBuildingRoot = false;
 
-        List<RootStruct> rootsPositioned = new List<RootStruct>();
+        List<RootStruct> LastRootsPositioned = new List<RootStruct>();
+        List<RootStruct> currerntRootsPositioned = new List<RootStruct>();
 
-        private void OnEnable()
+
+    private void OnEnable()
         {
             GameManager.changeWorldsEvent += OnChangeWorld;
             MouseInputManager.StartTargetUpdatedEvent += OnSrcTargetUpdated;
@@ -62,12 +65,27 @@ using UnityEngine;
             WaterResource resource = obj.GetComponent<WaterResource>();
             if (isBuildingRoot && resource && !resource.isCollected)
             {
-                MergeRootMeshes();
-                currentRoot.GetComponentInParent<TreeEntity>().AddWater(resource.amount);
-                resource.isCollected = true;
-                // ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
+            //MergeRootMeshes();
+
+            if (_currentRootEntity.connected)
+            {
+                StartCoroutine(DeletePlacedRoots(false));
+
             }
-            else
+                resource.isCollected = true;
+                _currentRootEntity.connected = true;
+                LastRootsPositioned = currerntRootsPositioned;
+                currerntRootsPositioned = new List<RootStruct>();
+            if (_currentRootEntity.connectedResource != null)
+            {
+                _currentRootEntity.connectedResource.isCollected = false;
+            }
+                _currentRootEntity.connectedResource = resource;
+            _currentRootEntity.AddWater(5);
+
+                // ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
+        }
+        else
             {
                 StartCoroutine(DeletePlacedRoots());
             }
@@ -78,14 +96,14 @@ using UnityEngine;
 
         private void MergeRootMeshes()
         {
-            CombineInstance[] combine = new CombineInstance[rootsPositioned.Count];
+            CombineInstance[] combine = new CombineInstance[currerntRootsPositioned.Count];
 
             int i = 0;
-            while (i < rootsPositioned.Count)
+            while (i < currerntRootsPositioned.Count)
             {
-                combine[i].mesh = rootsPositioned[i].mesh.sharedMesh;
-                combine[i].transform = rootsPositioned[i].mesh.transform.localToWorldMatrix;
-                rootsPositioned[i].mesh.gameObject.SetActive(false);
+                combine[i].mesh = currerntRootsPositioned[i].mesh.sharedMesh;
+                combine[i].transform = currerntRootsPositioned[i].mesh.transform.localToWorldMatrix;
+                currerntRootsPositioned[i].mesh.gameObject.SetActive(false);
 
                 i++;
             }
@@ -115,15 +133,13 @@ using UnityEngine;
             if(target.tag == "UnderTree" && isUnderWorld)
             {
                 currentRoot = target;
+            _currentRootEntity = target.GetComponentInParent<TreeEntity>();
                 treePosition = Vector3ToVector2(currentRoot.transform.position);// new Vector2(tree.transform.position.x, tree.transform.position.z);
                 lastPlacedRootPosition = treePosition;
                 isBuildingRoot = true;
-            }
-            else
-            {
-                isBuildingRoot = false;
-                currentRoot = null;
-            }
+            
+        }
+
         }
 
         void Awake()
@@ -190,13 +206,15 @@ using UnityEngine;
         }
         WaitForSeconds waitCache = new WaitForSeconds(0.05f);
 
-        IEnumerator DeletePlacedRoots()
+        IEnumerator DeletePlacedRoots(bool isCurrent = true)
         {
-            for (int i = rootsPositioned.Count-1; i >= 0; i--)
+        var rootsToDelete = isCurrent ? currerntRootsPositioned : LastRootsPositioned;
+
+            for (int i = rootsToDelete.Count-1; i >= 0; i--)
             {
                 try
                 {
-                    Destroy(rootsPositioned[i].gameobject);
+                    Destroy(rootsToDelete[i].gameobject);
 
                 }
                 catch (Exception)
@@ -205,7 +223,7 @@ using UnityEngine;
                 }
                 yield return waitCache;
             }
-            rootsPositioned.Clear();
+            rootsToDelete.Clear();
         }
 
         private void CreateRoot(Vector2 position)
@@ -213,11 +231,11 @@ using UnityEngine;
             Vector3 realPos = Vector3ToVector2(position, -1f);
             GameObject root = (GameObject)Instantiate(UnityEngine.Resources.Load("prefabs/Root"), realPos, Quaternion.identity, this.transform);
             lastPlacedRootPosition = Vector3ToVector2(realPos);//root.transform.position;
-            rootsPositioned.Add(new RootStruct(root,root.GetComponentInChildren<MeshFilter>()));
+            currerntRootsPositioned.Add(new RootStruct(root,root.GetComponentInChildren<MeshFilter>()));
 
-            if (rootsPositioned.Count > 1)
+            if (currerntRootsPositioned.Count > 1)
             {
-                rootsPositioned[rootsPositioned.Count - 2].gameobject.transform.LookAt(realPos);
+                currerntRootsPositioned[currerntRootsPositioned.Count - 2].gameobject.transform.LookAt(realPos);
             }
         }
 
@@ -240,7 +258,7 @@ using UnityEngine;
         {
             CreateRoot(Vector3ToVector2(posA) + diraction * createRootMinimumDistance*i);
         }
-        rootsPositioned.Clear();
+        currerntRootsPositioned.Clear();
         isBuildingRoot = false;
         currentRoot = null;
 
