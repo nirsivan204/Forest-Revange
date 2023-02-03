@@ -10,7 +10,6 @@ public class TreeEntity : MonoBehaviour
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
-    [SerializeField] private float colliderRadiusMultiplayer = 5;
 
     public event EventHandler<int> LevelChanged;
 
@@ -48,26 +47,6 @@ public class TreeEntity : MonoBehaviour
         }
         Debug.Log("UPGRADE");
         LevelChanged?.Invoke(this, _level);
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, colliderRadiusMultiplayer * _level);
-        Debug.Log("colliders in sphere: " + hitColliders.Length);
-        foreach (Collider collider in hitColliders)
-        {
-            TreeEntity collidedTree = collider.GetComponentInParent<TreeEntity>();
-            if (collidedTree && collidedTree != this)
-            {
-                Debug.Log("Found tree in nearby colliders");
-
-                if (collidedTree._level == _level && collidedTree != this)
-                {
-                    RootExpansionController.Instance.MergeRoots(collidedTree.root.transform.position, this.root.transform.position);//  collidedTree.root.transform
-                    Destroy(collidedTree.tree);
-                    Destroy(collidedTree.gameObject);
-                    UpgradeTree();
-                    return;
-                }
-                
-            }
-        }
     }
 
     public int getLevel()
