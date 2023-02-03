@@ -15,7 +15,7 @@ public class MouseInputManager : MonoBehaviour
 
     public float targetHeight = 5;
 
-    public GameObject target;
+    private GameObject target;
 
     void Awake()
     {
