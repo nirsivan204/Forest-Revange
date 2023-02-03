@@ -100,6 +100,5 @@ public class CameraBehaviour : MonoBehaviour
     {
         Vector3 startPos = transform.position;
         Vector3 endPos = target;
-
     }
 }
