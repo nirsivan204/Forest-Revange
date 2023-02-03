@@ -20,7 +20,7 @@ public class TreeEntity : MonoBehaviour
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
     internal bool connected;
-    public WaterResource connectedResource;
+    public PoolType connectedResource;
     public ResourceTypes type = ResourceTypes.Water;
 
     public event EventHandler<int> LevelChanged;

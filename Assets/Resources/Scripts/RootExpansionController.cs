@@ -62,7 +62,7 @@ using UnityEngine;
 
         private void OnEndTargetUpdated(GameObject obj)
         {
-            WaterResource resource = obj.GetComponent<WaterResource>();
+            PoolType resource = obj.GetComponent<PoolType>();
             if (isBuildingRoot && resource && !resource.isCollected)
             {
             //MergeRootMeshes();
