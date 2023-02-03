@@ -6,8 +6,6 @@ using UnityEngine;
 public class UpperWorld : AbstractGameGrid
 {
     //[SerializeField] GameObject _meshParent;
-    [SerializeField] MeshRenderer upperWorldMesh;
-    [SerializeField] MeshCollider upperWorldMeshCollider;
     float hideOpacity = 0.25f;
     protected override void OnWorldChange(World world)
     {
@@ -23,7 +21,6 @@ public class UpperWorld : AbstractGameGrid
 
     private void SetInvisible(float opacity, bool v)
     {
-        upperWorldMesh.material.color = new Color(upperWorldMesh.material.color.r, upperWorldMesh.material.color.g, upperWorldMesh.material.color.b, opacity);
-        upperWorldMeshCollider.enabled = v;
+
     }
 }
