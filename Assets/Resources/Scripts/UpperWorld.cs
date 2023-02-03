@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class UpperWorld : AbstractGameGrid
 {
-    //[SerializeField] GameObject _meshParent;
-    float hideOpacity = 0.25f;
+    [SerializeField] GameObject _meshParent;
     protected override void OnWorldChange(World world)
     {
-        if(world == World.Under)
+        if (world == World.Under)
         {
-            SetInvisible(hideOpacity, false);
+            SetInvisible(true);
         }
         else
         {
-            SetInvisible(1, true);
+            SetInvisible(false);
         }
     }
 
-    private void SetInvisible(float opacity, bool v)
+    private void SetInvisible(bool v)
     {
-
+        _meshParent.SetActive(!v);
     }
 }

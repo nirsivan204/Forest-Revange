@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17630532, g: 0.2206603, b: 0.3029824, a: 1}
+  m_IndirectSpecularColor: {r: 0.17630532, g: 0.2206603, b: 0.30298242, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1473,6 +1473,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7079843147574928387, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
+      propertyPath: _underWorld
+      value: 
+      objectReference: {fileID: 5995163523029206999}
+    - target: {fileID: 7079843147574928387, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
+      propertyPath: _upperWorld
+      value: 
+      objectReference: {fileID: 5995163522122353824}
     - target: {fileID: 7079843147574928391, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
       propertyPath: m_Name
       value: Main Camera
