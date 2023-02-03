@@ -13,7 +13,6 @@ public class CamFix : MonoBehaviour
     float _upperWorldHeight;
     float _underWorldHeight;
 
-    private Vector3 velocity = Vector3.zero;
     private Vector3 targetPosition;
     private Vector3 dragOrigin = Vector3.zero;
 
@@ -56,8 +55,8 @@ public class CamFix : MonoBehaviour
     private void Drag()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Camera.main.transform.position;
-        targetPosition.x = dragOrigin.x - difference.x;
-        targetPosition.z = dragOrigin.z - difference.z;
+            targetPosition.x = dragOrigin.x - difference.x;
+            targetPosition.z = dragOrigin.z - difference.z;    
     }
     private void MoveToTarget(Vector3 target)
     {
@@ -68,6 +67,6 @@ public class CamFix : MonoBehaviour
         endPos.z += offset.z;
 
         Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * timeOffset * Time.deltaTime);
-        transform.position = nextStep;
+        transform.position = targetPosition;
     }
 }
