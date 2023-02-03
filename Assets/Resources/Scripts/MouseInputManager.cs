@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class MouseInputManager : MonoBehaviour
 
 
     public GameObject target;
+    public static Action<GameObject> targetUpdatedEvent;
 
     private void OnEnable()
     {
@@ -115,7 +117,9 @@ public class MouseInputManager : MonoBehaviour
             mouseClickPosition = hit.point;
             isDrawingLine = true;
             lineRenderer.enabled = true;
+            targetUpdatedEvent?.Invoke(hit.collider.gameObject);
+            return (hit.collider.gameObject);
         }
-        return (hit.collider.gameObject);
+        return null;
     }
 }
