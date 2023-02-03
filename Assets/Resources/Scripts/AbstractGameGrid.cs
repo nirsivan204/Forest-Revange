@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,21 +16,22 @@ public abstract class AbstractGameGrid : MonoBehaviour
     [SerializeField] int Width;
     [SerializeField] int Height;
 
-    private TilesTypes[,] GameBoard;
+    public void OnEnable()
+    {
+        GameManager.changeWorldsEvent += OnWorldChange;
+    }
+
+    public void OnDisable()
+    {
+        GameManager.changeWorldsEvent -= OnWorldChange;
+
+    }
+
+    protected abstract void OnWorldChange(World world);
 
     public virtual void init()
     {
 
-    }
-
-    public TilesTypes GetTile(int x,int y)
-    {
-        return GameBoard[x, y];
-    }
-
-    public void SetTile(int x, int y, TilesTypes type)
-    {
-        GameBoard[x, y] = type;
     }
 
 }
