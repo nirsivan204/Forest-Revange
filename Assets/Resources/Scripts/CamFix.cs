@@ -6,18 +6,22 @@ public class CamFix : MonoBehaviour
 {
     [SerializeField] Vector3 offset;
     [SerializeField] float cameraMoveSpeed = 4f;
-    [SerializeField] float timeOffset;
-
     [SerializeField] GameObject _upperWorld;
     [SerializeField] GameObject _underWorld;
+    
     float _upperWorldHeight;
     float _underWorldHeight;
 
     private Vector3 targetPosition;
     private Vector3 dragOrigin = Vector3.zero;
 
+    [Header("Zoom")]
+    [SerializeField]int treeSize = 1;
+    [SerializeField] int ZoomSize;
+    [SerializeField] int zoomSpeed = 2;
     void Start()
     {
+        treeSize = 1;
         targetPosition = transform.position;
         _upperWorldHeight = offset.y + _upperWorld.transform.position.y;
         _underWorldHeight = offset.y + _underWorld.transform.position.y;
@@ -32,6 +36,7 @@ public class CamFix : MonoBehaviour
         {
             Drag();
         }
+        ZoomCam(treeSize);
     }
 
     void LateUpdate()
@@ -55,8 +60,8 @@ public class CamFix : MonoBehaviour
     private void Drag()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Camera.main.transform.position;
-            targetPosition.x = dragOrigin.x - difference.x;
-            targetPosition.z = dragOrigin.z - difference.z;    
+        targetPosition.x = dragOrigin.x - difference.x;
+        targetPosition.z = dragOrigin.z - difference.z;
     }
     private void MoveToTarget(Vector3 target)
     {
@@ -66,7 +71,12 @@ public class CamFix : MonoBehaviour
         endPos.x += offset.x;
         endPos.z += offset.z;
 
-        Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * timeOffset * Time.deltaTime);
+        Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * Time.deltaTime);
         transform.position = nextStep;
+    }
+    private void ZoomCam(int treeSize)
+    {
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 1, Mathf.Infinity);
+        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, treeSize * ZoomSize, zoomSpeed * Time.deltaTime);
     }
 }
