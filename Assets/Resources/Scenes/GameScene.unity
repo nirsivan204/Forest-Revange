@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,7 +342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.19996412, y: -0.3736123, z: 0.08282785, w: 0.90198}
-  m_LocalPosition: {x: 6.11, y: 8.71, z: -10.11}
+  m_LocalPosition: {x: 6, y: 9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -358,13 +358,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5495d6a5c9e4f469eca12afc98b87a, type: 3}
+  m_Script: {fileID: 11500000, guid: a5bfce6e038eb794bb6813b139e030c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGameObject: {fileID: 0}
-  timeOffset: 0
-  offset: {x: 0, y: 5.5, z: 0}
+  offset: {x: 0, y: 5, z: 0}
   cameraMoveSpeed: 4
+  timeOffset: 6
   _upperWorld: {fileID: 1346207147}
   _underWorld: {fileID: 1857360720}
 --- !u!1 &1031610707
