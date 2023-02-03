@@ -6,8 +6,6 @@ public class CamFix : MonoBehaviour
 {
     [SerializeField] Vector3 offset;
     [SerializeField] float cameraMoveSpeed = 4f;
-    [SerializeField] float timeOffset;
-
     [SerializeField] GameObject _upperWorld;
     [SerializeField] GameObject _underWorld;
     float _upperWorldHeight;
@@ -66,7 +64,7 @@ public class CamFix : MonoBehaviour
         endPos.x += offset.x;
         endPos.z += offset.z;
 
-        Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * timeOffset * Time.deltaTime);
-        transform.position = nextStep;
+        Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * Time.deltaTime);
+        transform.localPosition = nextStep;
     }
 }
