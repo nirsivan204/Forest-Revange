@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum ResourceType
+{
+    Water,
+}
+
 public class ResourceEntity : MonoBehaviour
 {
-    public string unitType = "";
+    public ResourceType type;
     public string resourceName = "";
     public float unitValency = 1;
     public float amount = 1;
+    public bool isCollected = false;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
+        this.tag = "Resource";
     }
 
     // Update is called once per frame
     void Update()
     {
-        scaleAccordingToAmount();
+      //  scaleAccordingToAmount();
     }
     void scaleAccordingToAmount()
     {

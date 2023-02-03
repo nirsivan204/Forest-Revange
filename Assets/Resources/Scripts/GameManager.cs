@@ -14,17 +14,6 @@ public class GameManager : MonoBehaviour
     public static Action<World> changeWorldsEvent;
     World _currentWorld = World.Upper;
 
-    public void OnEnable()
-    {
-        changeWorldsEvent += OnWorldChange;
-    }
-
-    public void OnDisable()
-    {
-        changeWorldsEvent -= OnWorldChange;
-
-    }
-
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -35,9 +24,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnWorldChange(World world)
-    {
 
-    }
 
 }
