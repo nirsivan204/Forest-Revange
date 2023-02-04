@@ -14,6 +14,11 @@ public class TreeAnimator : MonoBehaviour
     
     public Vector3 startPoint;
 
+
+    // Defining the bone anchor points
+    private Transform midBone;
+    private Transform topBone;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +26,10 @@ public class TreeAnimator : MonoBehaviour
         animator.speed = 0;
         mouseInputManager = GameObject.Find("Mouse Input Manager").gameObject.GetComponent<MouseInputManager>();
         appleThrowScript = transform.gameObject.GetComponent<AppleThrow>();
+
+        // Defining the bone anchor points
+        midBone = transform.GetChild(0).Find("Tree_ctrl").GetChild(0).GetChild(0).GetChild(0);
+        topBone = midBone.GetChild(0);
     }
 
     // Update is called once per frame
@@ -29,8 +38,9 @@ public class TreeAnimator : MonoBehaviour
         if (animationTime <= 1)
         {
             animationTime = animationTime + Time.deltaTime;
+            animator.Play(0, 0, animationTime);
+
         }
-        animator.Play(0, 0, animationTime);
         bool pullingTree = appleThrowScript.pullingTree;
         Vector3 startPoint = appleThrowScript.startPoint;
         Vector3 dragDirection = appleThrowScript.dragDirection;
