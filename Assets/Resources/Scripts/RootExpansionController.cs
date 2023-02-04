@@ -19,7 +19,7 @@ using UnityEngine;
         }
 
         private const float createRootMinimumDistance = 0.3f;
-        [SerializeField] int maxExpansionDistance = 5;
+        [SerializeField] public int maxExpansionDistance = 5;
         Vector2 lastPlacedRootPosition;
         Vector2 treePosition;
 
