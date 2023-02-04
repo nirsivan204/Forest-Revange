@@ -3,25 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PowerType
-{
-    NoPower,
-    Gas,
-    Sewerage,
-    Electric,
-}
-
 public class TreeEntity : MonoBehaviour
 {
     float _connectedWaterAmount = 0;
     int _level = 0;
-    PowerType power  = PowerType.NoPower;
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
     internal bool connected;
     public PoolType connectedResource;
-    public ResourceTypes type = ResourceTypes.Water;
+    public ResourceTypes type;
 
     public event EventHandler<int> LevelChanged;
     // Start is called before the first frame update
@@ -37,13 +28,11 @@ public class TreeEntity : MonoBehaviour
     }
 
 
-    public void AddWater(float amount)
+    public void SetType(ResourceTypes type)
     {
-        _connectedWaterAmount += amount;
-        if(_level==0 && _connectedWaterAmount >= Params.WaterToGrow)
-        {
-            UpgradeTree();
-        }
+        this.type = type;
+        UpgradeTree();
+
     }
 
     private void UpgradeTree()
@@ -54,15 +43,10 @@ public class TreeEntity : MonoBehaviour
         if (_level == 1)
         {
             Destroy(seedling);
-            tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameObject.Find("Upper World").transform);    
+            tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameObject.Find("Upper World").transform);
+            tree.GetComponent<AppleThrow>().type = type;
         }
         Debug.Log("UPGRADE");
         LevelChanged?.Invoke(this, _level);
     }
-
-    public PowerType getPower()
-    {
-        return power;
-    }
-
 }

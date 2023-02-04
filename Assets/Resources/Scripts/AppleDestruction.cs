@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AppleDestruction : MonoBehaviour
 {
-    public PowerType power;
+    public ResourceTypes resourceType;
 
     // Start is called before the first frame update
     void Start()
@@ -26,15 +26,16 @@ public class AppleDestruction : MonoBehaviour
     }
 
     private string powerToString() {
-        switch (power) {
-            case PowerType.Gas:
+        switch (resourceType) {
+            case ResourceTypes.Gas:
                 return "gas";
-            case PowerType.Sewerage:
-                return "sewerage";
-            case PowerType.Electric:
+            case ResourceTypes.Sewage:
+                return "sewage";
+            case ResourceTypes.Electricity:
                 return "gas";
-            default:
-                return "nothing";
+            case ResourceTypes.Water:
+                return "water";
         }
+        return null;
     }
 }

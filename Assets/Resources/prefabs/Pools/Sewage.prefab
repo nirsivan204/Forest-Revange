@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 5337009234125844096}
   m_Layer: 0
   m_Name: Sewage
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,4 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dab4ba0b286de04f8f6738b664c1be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooltype: Sewage
+  pooltype: 2
+  isCollected: 0

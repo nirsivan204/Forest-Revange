@@ -81,7 +81,7 @@ using UnityEngine;
                 _currentRootEntity.connectedResource.isCollected = false;
             }
                 _currentRootEntity.connectedResource = resource;
-            _currentRootEntity.AddWater(5);
+            _currentRootEntity.SetType(resource.pooltype);
 
                 // ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
         }

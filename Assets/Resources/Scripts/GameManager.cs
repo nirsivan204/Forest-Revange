@@ -13,8 +13,8 @@ public enum ResourceTypes
 {
     Water,
     Gas,
+    Sewage,
     Electricity,
-    Biov
 }
 
 public class GameManager : MonoBehaviour
