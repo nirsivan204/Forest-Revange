@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358dc99691b3d3e4abf33747319e5e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeSafeRadius: 5
+  treeSafeRadius: 1
   timeForRollingOnGround: 1
 --- !u!114 &9213955725183675036
 MonoBehaviour:
