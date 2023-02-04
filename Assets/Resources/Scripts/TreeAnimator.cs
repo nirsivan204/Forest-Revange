@@ -38,8 +38,13 @@ public class TreeAnimator : MonoBehaviour
         if (animationTime <= 1)
         {
             animationTime = animationTime + Time.deltaTime;
+            animator.Play(0, 0, animationTime);
+
         }
-        animator.Play(0, 0, animationTime);
+        else
+        {
+            animator.enabled = false;
+        }
         bool pullingTree = appleThrowScript.pullingTree;
         Vector3 startPoint = appleThrowScript.startPoint;
         Vector3 dragDirection = appleThrowScript.dragDirection;
@@ -48,7 +53,11 @@ public class TreeAnimator : MonoBehaviour
         if (pullingTree)
         {
             float dragDistance = Vector3.Distance(startPoint, mousePoint);
-            
+            dragDirection = Vector3.ClampMagnitude(mousePoint - startPoint, appleThrowScript.maxThrowMagnitute);
+
+            Debug.Log(dragDirection);
+
+            //midBone.rota
             //Debug.Log(dragDirection);
         }
     }
