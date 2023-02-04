@@ -6,6 +6,7 @@ public class CamFix : MonoBehaviour
 {
     [SerializeField] Vector3 offset;
     [SerializeField] float cameraMoveSpeed = 4f;
+    [SerializeField] Camera upperCam;
     [SerializeField] GameObject _upperWorld;
     [SerializeField] GameObject _underWorld;
     
@@ -64,6 +65,7 @@ public class CamFix : MonoBehaviour
     public void OnWorldChange(World world)
     {
         targetPosition.y = world == World.Upper ? _upperWorldHeight : _underWorldHeight;
+        Camera.main.cullingMask = world == World.Upper ? ~0:~(1<<6);
     }
     private void Drag()
     {
@@ -85,5 +87,6 @@ public class CamFix : MonoBehaviour
     private void ZoomCam()
     {
         Camera.main.orthographicSize = Mathf.Clamp(Mathf.Lerp(Camera.main.orthographicSize, zoomSize, camZoomSpeed * Time.deltaTime), minZoom, maxZoom);
+        upperCam.orthographicSize = Camera.main.orthographicSize;
     }
 }

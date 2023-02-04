@@ -59,6 +59,7 @@ MonoBehaviour:
   startPoint: {x: 0, y: 0, z: 0}
   maxThrowMagnitute: 5
   type: 0
+  dragDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6465339865490718087
 MonoBehaviour:
   m_ObjectHideFlags: 0

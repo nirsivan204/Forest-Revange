@@ -31,10 +31,11 @@ public class MouseInputManager : MonoBehaviour
     {
         GameManager.changeWorldsEvent += OnChangeWorld;
     }
-
+    int layerMask;
     private void OnChangeWorld(World world)
     {
         _currentPlane = world == World.Under? _underWorldPlane : _upperWorldPlane;
+        layerMask = world == World.Under ? ~(1<<6) : 0;
     }
 
     private void OnDisable()
@@ -120,7 +121,7 @@ public class MouseInputManager : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit,Mathf.Infinity, layerMask))
         {
             return hit.collider.gameObject;
         }
@@ -130,7 +131,7 @@ public class MouseInputManager : MonoBehaviour
         GameObject ClickTarget(Ray ray)
     {
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))
         {
             Debug.Log("Clicked on object: " + hit.collider.gameObject.name);
             mouseClickPosition = hit.point;
