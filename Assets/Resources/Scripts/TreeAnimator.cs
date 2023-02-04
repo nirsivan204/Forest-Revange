@@ -19,6 +19,12 @@ public class TreeAnimator : MonoBehaviour
     private Transform midBone;
     private Transform topBone;
 
+    private float rotatedX = 0;
+    private float rotatedY = 0;
+
+    private float rotateZ = 0;
+    private float rotateX = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,10 +61,20 @@ public class TreeAnimator : MonoBehaviour
             float dragDistance = Vector3.Distance(startPoint, mousePoint);
             dragDirection = Vector3.ClampMagnitude(mousePoint - startPoint, appleThrowScript.maxThrowMagnitute);
 
-            Debug.Log(dragDirection);
+            rotateZ = (dragDirection.x / appleThrowScript.maxThrowMagnitute) * 45;
+            rotateX = (dragDirection.z / appleThrowScript.maxThrowMagnitute) * 45;
+
 
             //midBone.rota
             //Debug.Log(dragDirection);
         }
+        else
+        {
+            rotateZ = Mathf.LerpAngle(rotateZ, 0, 0.5f);
+            rotateX = Mathf.LerpAngle(rotateX, 0, 0.5f);
+
+        }
+        midBone.eulerAngles = new Vector3(rotateX, 0, -rotateZ);
+        topBone.eulerAngles = new Vector3(rotateX, 0, -rotateZ);
     }
 }
