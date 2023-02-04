@@ -11,6 +11,10 @@ public class AppleDestruction : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     private string powerToString() {
