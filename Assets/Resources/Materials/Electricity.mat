@@ -34,7 +34,7 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _BUILTIN_SrcBlend: 5
     - _BUILTIN_Surface: 1
-    - _BUILTIN_ZTest: 4
+    - _BUILTIN_ZTest: 2
     - _BUILTIN_ZWrite: 0
     - _BUILTIN_ZWriteControl: 0
     - _ElectricityAmount: 7

@@ -11,7 +11,7 @@ public class AppleThrow : MonoBehaviour
 
     public bool pullingTree = false;
 
-    private Vector3 startPoint;
+    public Vector3 startPoint;
 
     private GameObject apple;
 
@@ -32,7 +32,8 @@ public class AppleThrow : MonoBehaviour
         if(mouseInputManager.isDrawingLine && !pullingTree)
         {
             startPoint = mouseInputManager.hitPoint;
-            if(Vector3.Distance(startPoint, transform.position) <= maxClickDistanceToRegisterThrow)
+            Vector3 treePositionOnOffsetPlane = new Vector3(transform.position.x, 5, transform.position.z);
+            if(Vector3.Distance(startPoint, treePositionOnOffsetPlane) <= maxClickDistanceToRegisterThrow)
             {
                 pullingTree = true;
             }
