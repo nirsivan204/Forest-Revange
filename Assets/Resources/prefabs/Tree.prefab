@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2840061289424175910}
   - component: {fileID: 1824811911228268901}
   - component: {fileID: 4799451130955624346}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tree
   m_TagString: Tree
   m_Icon: {fileID: 0}
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ab03ab21e821f4e86bb5d437e8d832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   startPoint: {x: 0, y: 0, z: 0}
 --- !u!136 &6532333771988568093
 CapsuleCollider:
@@ -172,6 +173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6002967774173596918}
     m_Modifications:
+    - target: {fileID: -8794599410884411974, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -216,9 +221,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7433522636658993931, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5552036643606172100, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3209012260972960112, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 375517915199365746, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
       propertyPath: m_Name
       value: Tree asset
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729972828039373262, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965262662893295060, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3628ba442c38fa2409f1778d2acf72ed, type: 3}
