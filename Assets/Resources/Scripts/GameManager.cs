@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]public GameObject UnderWorld;
     [SerializeField]public GameObject UpperWorld;
+    [SerializeField] private GameObject startScreenUI;
 
     void Awake()
     {
@@ -53,6 +54,8 @@ public class GameManager : MonoBehaviour
     {
         _currentWorld = _currentWorld == World.Under ? World.Upper : World.Under;
         changeWorldsEvent.Invoke(_currentWorld);
+        if(startScreenUI.activeSelf)
+            startScreenUI.SetActive(false);
     }
 
 }
