@@ -57,7 +57,7 @@ public class AppleThrow : MonoBehaviour
         }
         else
         {
-            canThrow = false;
+            //canThrow = false;
         }
     }
 
