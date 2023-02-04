@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ac69e21-242d-4865-8a4d-f80f8c598fbf" name="Changes" comment="">
+    <list default="true" id="e9b1fdc5-8b0b-4226-935f-87163db022e8" name="Changes" comment="added packages">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Forest-Revange/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Forest-Revange/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/MouseInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/MouseInputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/RootExpansionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/RootExpansionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,14 +13,30 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="fdfd994d122fad2793f728e96c7bd9104c1d5fd0" />
+        <entry key="$PROJECT_DIR$" value="particle_effects" />
       </map>
     </option>
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="nirsivan204" />
+        <option name="repository" value="Forest-Revange" />
+      </RepoCoordinatesHolder>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/AppleNoClip.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/RootExpansionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/TreeEntity.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/TreeEntity.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/TreeEntity.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/TreeEntity.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/TreeEntity.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/TreeScript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/amitr/Forest-Revange/Assets/Resources/Scripts/TreesManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -95,7 +109,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675380222957</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Removed tree merge on upgrade">
+      <created>1675463968929</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675463968929</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added packages">
+      <created>1675500182605</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675500182605</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +148,8 @@
     <MESSAGE value="Added root agent and root expansion controller scripts" />
     <MESSAGE value="Made root expansion controller singleton" />
     <MESSAGE value="Changed RootExpansionController to get position from other scripts and instantiate roots" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed RootExpansionController to get position from other scripts and instantiate roots" />
+    <MESSAGE value="Removed tree merge on upgrade" />
+    <MESSAGE value="added packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="added packages" />
   </component>
 </project>
