@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
-  plant: {fileID: 0}
+  Gas: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  biuv: {fileID: 0}
 --- !u!1 &1013271631977896471
 GameObject:
   m_ObjectHideFlags: 0
