@@ -10,6 +10,7 @@ public class TreeEntity : MonoBehaviour
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
     [SerializeField] GameObject bounderies;
+    [SerializeField] private GameObject boundryCylinder;
     internal bool connected;
     public PoolType connectedResource;
     public ResourceTypes type;
@@ -30,6 +31,7 @@ public class TreeEntity : MonoBehaviour
         {
             seedling.SetActive(world == World.Upper);
         }
+        boundryCylinder.SetActive(world == World.Upper);
     }
 
     private void OnDisable()
@@ -68,8 +70,11 @@ public class TreeEntity : MonoBehaviour
 
     public IEnumerator CreateDustParticleEffect()
     {
+        Debug.Log("creating dust particle effect");
         GameObject dustEffect = Instantiate((GameObject)Resources.Load("Particle Effects/DustSmoke_A"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameManager.Instance.UpperWorld.transform);
+        Debug.Log("waiting 1 second");
         yield return new WaitForSeconds(1);
+        Debug.Log("destroying dust particle effect");
         Destroy(dustEffect);
     }
 }
