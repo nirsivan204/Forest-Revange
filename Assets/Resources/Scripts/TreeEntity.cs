@@ -64,6 +64,10 @@ public class TreeEntity : MonoBehaviour
             Destroy(seedling);
             isUpgraded = true;
         }
+        else
+        {
+            Destroy(tree);
+        }
         tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameManager.Instance.UpperWorld.transform);
         tree.GetComponent<AppleThrow>().type = type;
         switch (type)
