@@ -14,6 +14,10 @@ public class TreeEntity : MonoBehaviour
     public PoolType connectedResource;
     public ResourceTypes type;
 
+    public void Start()
+    {
+        bounderies.transform.localScale = new Vector3(RootExpansionController.Instance.maxExpansionDistance, bounderies.transform.localScale.y, RootExpansionController.Instance.maxExpansionDistance);
+    }
     private void OnEnable()
     {
         GameManager.changeWorldsEvent += OnChangeWorld;
