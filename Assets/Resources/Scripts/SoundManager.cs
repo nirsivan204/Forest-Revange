@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource upperWorld, underWorld, sfxSource;
     public static SoundManager instance;
     bool isUpper = true;
+    [SerializeField] float timeToFade = 0.25f;
 
     [Header("SFX")]
     [SerializeField] private AudioClip Transition;
@@ -60,7 +61,6 @@ public class SoundManager : MonoBehaviour
     }
     private IEnumerator FadeTrack()
     {
-        float timeToFade = 0.25f;
         float timeElapsed = 0;
         if (isUpper)
         {
