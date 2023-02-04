@@ -57,5 +57,5 @@ Material:
     - _Color: {r: 630.46277, g: 766.9961, b: 0, a: 1}
     - _ElectricitySpeed: {r: 0, g: 0.5, b: 0, a: 0}
     - _NoiseSpeed: {r: 0.1, g: -0.5, b: 0, a: 0}
-    - _baseColor: {r: 0.41509423, g: 0.4045203, b: 0.28456146, a: 1}
+    - _baseColor: {r: 0.3301887, g: 0.3269793, b: 0.2948855, a: 0.2901961}
   m_BuildTextureStacks: []
