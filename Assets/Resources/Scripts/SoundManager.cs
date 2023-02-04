@@ -64,7 +64,6 @@ public class SoundManager : MonoBehaviour
         float timeElapsed = 0;
         if (isUpper)
         {
-            upperWorld.Play();
             while(timeElapsed < timeToFade)
             {
                 upperWorld.volume = Mathf.Lerp(0, 1, timeElapsed / timeToFade);
