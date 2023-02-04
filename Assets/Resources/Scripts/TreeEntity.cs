@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class TreeEntity : MonoBehaviour
 {
-    float _connectedWaterAmount = 0;
-    int _level = 0;
+    bool isUpgraded = false;
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
@@ -15,17 +14,6 @@ public class TreeEntity : MonoBehaviour
     public ResourceTypes type;
 
     public event EventHandler<int> LevelChanged;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void SetType(ResourceTypes type)
@@ -37,16 +25,14 @@ public class TreeEntity : MonoBehaviour
 
     private void UpgradeTree()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeDimension();
-        _level++;
-        Debug.Log("new level: " + _level);
-        if (_level == 1)
+        //GameObject.Find("GameManager").GetComponent<GameManager>().ChangeDimension();
+        if (!isUpgraded)
         {
             Destroy(seedling);
-            tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameObject.Find("Upper World").transform);
-            tree.GetComponent<AppleThrow>().type = type;
+            isUpgraded = true;
         }
+        tree.GetComponent<AppleThrow>().type = type;
+        tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameObject.Find("Upper World").transform);
         Debug.Log("UPGRADE");
-        LevelChanged?.Invoke(this, _level);
     }
 }
