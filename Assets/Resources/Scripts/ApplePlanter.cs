@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ApplePlanter : MonoBehaviour
 {
+    [SerializeField] private AudioClip appleHitSound;
     public float treeSafeRadius = 2;
 
     public float timeForRollingOnGround = 1;
@@ -40,13 +41,19 @@ public class ApplePlanter : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            SoundManager.instance.PlaySFX(appleHitSound);
+        }
+    }
     private void OnCollisionStay(Collision collision)
     {
         if(collision.gameObject.tag == "Ground")
         {
             timeForRollingOnGround = timeForRollingOnGround - Time.fixedDeltaTime;
         }
-
     }
 
 }
