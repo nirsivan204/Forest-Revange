@@ -82,8 +82,10 @@ using UnityEngine;
             }
                 _currentRootEntity.connectedResource = resource;
             _currentRootEntity.SetType(resource.pooltype);
+            _currentRootEntity.ToggleRange(false);
 
-                // ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
+
+            // ResourceManager.Collect(obj.GetComponent<ResourceEntity>());
         }
         else
             {
@@ -123,9 +125,11 @@ using UnityEngine;
             {
                 StartCoroutine(DeletePlacedRoots());
                 isBuildingRoot = false;
-            }
+                _currentRootEntity.ToggleRange(false);
 
         }
+
+    }
 
         private void OnSrcTargetUpdated(GameObject target)
         {
@@ -137,7 +141,7 @@ using UnityEngine;
                 treePosition = Vector3ToVector2(currentRoot.transform.position);// new Vector2(tree.transform.position.x, tree.transform.position.z);
                 lastPlacedRootPosition = treePosition;
                 isBuildingRoot = true;
-            
+                _currentRootEntity.ToggleRange(true);
         }
 
         }
