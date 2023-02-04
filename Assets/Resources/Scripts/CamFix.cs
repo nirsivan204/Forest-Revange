@@ -38,7 +38,7 @@ public class CamFix : MonoBehaviour
         {
             Drag();
         }
-        print(Input.GetAxis("Mouse ScrollWheel"));
+        //print(Input.GetAxis("Mouse ScrollWheel"));
         if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.03f)
         {
             zoomSize -= zoomSpeed * Mathf.Sign(Input.GetAxis("Mouse ScrollWheel"));
@@ -64,6 +64,7 @@ public class CamFix : MonoBehaviour
     public void OnWorldChange(World world)
     {
         targetPosition.y = world == World.Upper ? _upperWorldHeight : _underWorldHeight;
+        Camera.main.cullingMask = world == World.Upper ? ~0:~(1<<6);
     }
     private void Drag()
     {

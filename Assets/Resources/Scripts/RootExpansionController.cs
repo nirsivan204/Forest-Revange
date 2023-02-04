@@ -127,7 +127,10 @@ using UnityEngine;
                 StartCoroutine(DeletePlacedRoots());
                 isBuildingRoot = false;
             }
+            if(_currentRootEntity != null)
+        {
             _currentRootEntity.ToggleRange(false);
+        }
 
 
     }

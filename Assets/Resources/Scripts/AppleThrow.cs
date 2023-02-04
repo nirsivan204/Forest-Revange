@@ -18,6 +18,25 @@ public class AppleThrow : MonoBehaviour
     public float maxThrowMagnitute = 2f;
 
     public ResourceTypes type;
+    private bool canThrow = true;;
+
+/*    private void OnEnable()
+    {
+        GameManager.changeWorldsEvent += OnChangeWorld;
+
+    }
+
+    private void OnChangeWorld(World world)
+    {
+        canThrow = world == World.Upper;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.changeWorldsEvent -= OnChangeWorld;
+
+
+    }*/
 
 
     // Start is called before the first frame update
