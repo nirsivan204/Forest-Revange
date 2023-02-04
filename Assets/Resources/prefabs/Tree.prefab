@@ -57,7 +57,7 @@ MonoBehaviour:
   minDragDistanceToRegisterThrow: 1
   pullingTree: 0
   startPoint: {x: 0, y: 0, z: 0}
-  maxThrowMagnitute: 5
+  maxThrowMagnitute: 7
   type: 0
   dragDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6465339865490718087
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ab03ab21e821f4e86bb5d437e8d832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   startPoint: {x: 0, y: 0, z: 0}
 --- !u!136 &6532333771988568093
 CapsuleCollider:
