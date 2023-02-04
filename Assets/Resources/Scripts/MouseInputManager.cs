@@ -59,7 +59,7 @@ public class MouseInputManager : MonoBehaviour
 
     void Start()
     {
-        _upperWorldPlane = new Plane(Vector3.up, new Vector3(0, upperWorldHeight, 0));
+        _upperWorldPlane = new Plane(Vector3.up, new Vector3(0, upperWorldHeight+5, 0));
         _underWorldPlane = new Plane(Vector3.up, new Vector3(0, underWorldHeight, 0));
         _currentPlane = _upperWorldPlane;
         lineRenderer = GetComponent<LineRenderer>();

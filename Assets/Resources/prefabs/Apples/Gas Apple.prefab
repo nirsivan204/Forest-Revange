@@ -93,8 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358dc99691b3d3e4abf33747319e5e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeSafeRadius: 5
-  timeForRollingOnGround: 1
+  treeSafeRadius: 3
+  timeForRollingOnGround: 0.5
+  canBePlanted: 1
 --- !u!114 &9213955725183675036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 0
+  plant: {fileID: 0}
 --- !u!1 &1013271631977896471
 GameObject:
   m_ObjectHideFlags: 0

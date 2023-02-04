@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ApplePlanter : MonoBehaviour
 {
+    [SerializeField] private AudioClip appleHitSound;
     public float treeSafeRadius = 2;
 
     public float timeForRollingOnGround = 1;
+    public float timeUntilTimeoutBecauseNoPlant = 15;
 
     public bool canBePlanted = true;
 
@@ -38,15 +40,26 @@ public class ApplePlanter : MonoBehaviour
             Instantiate(Resources.Load<GameObject>("prefabs/TreeParent"),spawnLocation, spawnRotation, GameObject.Find("Under World").transform);
             Destroy(transform.gameObject);
         }
+        timeUntilTimeoutBecauseNoPlant = timeUntilTimeoutBecauseNoPlant - Time.deltaTime;
+        if(timeUntilTimeoutBecauseNoPlant <= 0)
+        {
+            Destroy(transform.gameObject);
+        }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            SoundManager.instance.PlaySFX(appleHitSound);
+        }
+    }
     private void OnCollisionStay(Collision collision)
     {
         if(collision.gameObject.tag == "Ground")
         {
             timeForRollingOnGround = timeForRollingOnGround - Time.fixedDeltaTime;
         }
-
     }
 
 }
