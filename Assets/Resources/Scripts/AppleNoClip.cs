@@ -10,6 +10,10 @@ public class AppleNoClip : MonoBehaviour
     void Start()
     {
         transform.GetComponent<Collider>().enabled = false;
+        foreach (var c in transform.gameObject.GetComponentsInChildren<Collider>())
+        {
+           c.enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -21,6 +25,10 @@ public class AppleNoClip : MonoBehaviour
             if(noCollisionTimer <= 0)
             {
                 transform.GetComponent<Collider>().enabled = true;
+                foreach (var c in transform.gameObject.GetComponentsInChildren<Collider>())
+                {
+                    c.enabled = true;
+                }
             }
         }
     }
