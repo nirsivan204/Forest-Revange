@@ -42,6 +42,7 @@ public class AppleDestruction : MonoBehaviour
             Instantiate(hitParticle, this.transform.position, Quaternion.identity);
 
             yield return new WaitForSeconds(1);
+            Destroy(hitParticle);
         }
         Destroy(this.gameObject);
 
