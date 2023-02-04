@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7af92852565424b8ab873c1b8943ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appleThrowSound: {fileID: 8300000, guid: e0f3a2bb0f02c2b4794b021854a1da0e, type: 3}
+  applePrepareThrowSound: {fileID: 8300000, guid: 7e265b97c586e2d4aba81f3493f0dac6, type: 3}
   maxClickDistanceToRegisterThrow: 3
   minDragDistanceToRegisterThrow: 1
   pullingTree: 0

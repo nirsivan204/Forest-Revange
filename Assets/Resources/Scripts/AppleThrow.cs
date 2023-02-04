@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AppleThrow : MonoBehaviour
 {
+    [SerializeField] private AudioClip appleThrowSound;
+    [SerializeField] private AudioClip applePrepareThrowSound;
+
     public float maxClickDistanceToRegisterThrow = 1;
     public float minDragDistanceToRegisterThrow = 1;
 
@@ -76,6 +79,7 @@ public class AppleThrow : MonoBehaviour
                 Vector3 treePositionOnOffsetPlane = new Vector3(transform.position.x, 5, transform.position.z);
                 if (Vector3.Distance(startPoint, treePositionOnOffsetPlane) <= maxClickDistanceToRegisterThrow)
                 {
+                    SoundManager.instance.PlaySFX(applePrepareThrowSound);
                     pullingTree = true;
                 }
 
@@ -107,8 +111,11 @@ public class AppleThrow : MonoBehaviour
                     dragDirection = Vector3.ClampMagnitude(endPoint - startPoint, maxThrowMagnitute);
                     newApple.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), ForceMode.Impulse);
                     newApple.GetComponent<Rigidbody>().AddForce(dragDirection * -1 + new Vector3(0, dragDirection.magnitude / 2, 0), ForceMode.Impulse);
+                    SoundManager.instance.PlaySFX(appleThrowSound);
+
                 }
                 pullingTree = false;
+
             }
         }
 

@@ -93,8 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358dc99691b3d3e4abf33747319e5e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appleHitSound: {fileID: 8300000, guid: 2365577b183da994fa8b09df5e4685a1, type: 3}
+  applePlantSound: {fileID: 8300000, guid: e214dcf327ca20f4daf5848ece5817cf, type: 3}
   treeSafeRadius: 3
   timeForRollingOnGround: 0.5
+  timeUntilTimeoutBecauseNoPlant: 15
   canBePlanted: 1
 --- !u!114 &9213955725183675036
 MonoBehaviour:

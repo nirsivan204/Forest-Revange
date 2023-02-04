@@ -5,6 +5,7 @@ using UnityEngine;
 public class ApplePlanter : MonoBehaviour
 {
     [SerializeField] private AudioClip appleHitSound;
+    [SerializeField] private AudioClip applePlantSound;
     public float treeSafeRadius = 2;
 
     public float timeForRollingOnGround = 1;
@@ -38,6 +39,7 @@ public class ApplePlanter : MonoBehaviour
             Vector3 spawnLocation = new Vector3(transform.position.x, 0, transform.position.z);
             Quaternion spawnRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
             Instantiate(Resources.Load<GameObject>("prefabs/TreeParent"),spawnLocation, spawnRotation, GameObject.Find("Under World").transform);
+            SoundManager.instance.PlaySFX(applePlantSound);
             Destroy(transform.gameObject);
         }
         timeUntilTimeoutBecauseNoPlant = timeUntilTimeoutBecauseNoPlant - Time.deltaTime;
