@@ -19,6 +19,8 @@ public class AppleThrow : MonoBehaviour
 
     public ResourceTypes type;
 
+    public Vector3 dragDirection = new Vector3(0, 0, 0);
+
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +65,7 @@ public class AppleThrow : MonoBehaviour
                 }
 
                 GameObject newApple = Instantiate(apple, transform.position + new Vector3(0,5,0), transform.rotation, transform.parent);
-                Vector3 dragDirection = Vector3.ClampMagnitude(endPoint - startPoint, maxThrowMagnitute);
+                dragDirection = Vector3.ClampMagnitude(endPoint - startPoint, maxThrowMagnitute);
                 newApple.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), ForceMode.Impulse);
                 newApple.GetComponent<Rigidbody>().AddForce(dragDirection * -1 + new Vector3(0,dragDirection.magnitude/2,0), ForceMode.Impulse);
             }
