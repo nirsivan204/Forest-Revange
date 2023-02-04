@@ -92,7 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treeSafeRadius: 5
-  timeForRollingOnGround: 1
+  timeForRollingOnGround: 0.5
+  canBePlanted: 1
 --- !u!114 &9213955725183675036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 0
+  plant: {fileID: 0}
 --- !u!1001 &2807746259613634423
 PrefabInstance:
   m_ObjectHideFlags: 0
