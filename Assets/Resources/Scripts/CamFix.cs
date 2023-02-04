@@ -16,13 +16,15 @@ public class CamFix : MonoBehaviour
     private Vector3 dragOrigin = Vector3.zero;
 
     [Header("Zoom")]
-    [SerializeField]int treeSize = 1;
-    [SerializeField] int ZoomSize;
-    [SerializeField] int zoomSpeed = 2;
+    [SerializeField] float zoomSize;
+    [SerializeField] float zoomSpeed = 2;
+    [SerializeField] float camZoomSpeed = 2;
+    [SerializeField] float minZoom = 2;
+    [SerializeField] float maxZoom = 2;
     void Start()
     {
-        treeSize = 1;
-        targetPosition = transform.position;
+        Camera.main.orthographicSize = zoomSize;
+       targetPosition = transform.position;
         _upperWorldHeight = offset.y + _upperWorld.transform.position.y;
         _underWorldHeight = offset.y + _underWorld.transform.position.y;
     }
@@ -36,7 +38,13 @@ public class CamFix : MonoBehaviour
         {
             Drag();
         }
-        ZoomCam(treeSize);
+        print(Input.GetAxis("Mouse ScrollWheel"));
+        if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.03f)
+        {
+            zoomSize -= zoomSpeed * Mathf.Sign(Input.GetAxis("Mouse ScrollWheel"));
+            zoomSize = Mathf.Clamp(zoomSize, minZoom, maxZoom);
+        }
+        ZoomCam();
     }
 
     void LateUpdate()
@@ -74,9 +82,8 @@ public class CamFix : MonoBehaviour
         Vector3 nextStep = Vector3.Lerp(startPos, endPos, cameraMoveSpeed * Time.deltaTime);
         transform.position = nextStep;
     }
-    private void ZoomCam(int treeSize)
+    private void ZoomCam()
     {
-        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 1, Mathf.Infinity);
-        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, treeSize * ZoomSize, zoomSpeed * Time.deltaTime);
+        Camera.main.orthographicSize = Mathf.Clamp(Mathf.Lerp(Camera.main.orthographicSize, zoomSize, camZoomSpeed * Time.deltaTime), minZoom, maxZoom);
     }
 }

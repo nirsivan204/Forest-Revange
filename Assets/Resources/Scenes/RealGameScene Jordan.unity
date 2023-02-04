@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17630565, g: 0.22066057, b: 0.30298308, a: 1}
+  m_IndirectSpecularColor: {r: 0.17630532, g: 0.2206603, b: 0.30298242, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1169,6 +1169,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6651518016605301496, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
+      propertyPath: maxZoom
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651518016605301496, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
+      propertyPath: minZoom
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651518016605301496, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
+      propertyPath: ZoomSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651518016605301496, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
+      propertyPath: zoomSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651518016605301496, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
+      propertyPath: zoomSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6651518016605301496, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
       propertyPath: _underWorld
       value: 
