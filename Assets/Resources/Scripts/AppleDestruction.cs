@@ -4,7 +4,7 @@ using UnityEngine;
 public class AppleDestruction : MonoBehaviour
 {
     public ResourceTypes resourceType;
-    public ApplePlanter plant;
+    //public ApplePlanter plant;
     GameObject hitParticle = null; 
 
     private void OnCollisionEnter(Collision collision)
@@ -12,7 +12,7 @@ public class AppleDestruction : MonoBehaviour
         string powerString = powerToString();
         if (collision.gameObject.name.IndexOf(powerString) != -1)
         {
-            plant.canBePlanted = false;
+            //plant.canBePlanted = false;
             Destroy(collision.gameObject);
             StartCoroutine(PlayEffect());
         }
