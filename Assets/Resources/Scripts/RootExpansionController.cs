@@ -19,7 +19,7 @@ using UnityEngine;
         }
 
         private const float createRootMinimumDistance = 0.3f;
-        private const int maxExpansionDistance = 5;
+        [SerializeField] int maxExpansionDistance = 5;
         Vector2 lastPlacedRootPosition;
         Vector2 treePosition;
 
@@ -64,8 +64,8 @@ using UnityEngine;
         private void OnEndTargetUpdated(GameObject obj)
         {
             PoolType resource = obj.GetComponent<PoolType>();
-            if (isBuildingRoot && resource && !resource.isCollected)
-            {
+            if (isBuildingRoot && resource && _currentRootEntity.connectedResource!= resource)
+        {
             //MergeRootMeshes();
 
             if (_currentRootEntity.connected)
@@ -73,14 +73,14 @@ using UnityEngine;
                 StartCoroutine(DeletePlacedRoots(false));
 
             }
-                resource.isCollected = true;
+               // resource.isCollected = true;
                 _currentRootEntity.connected = true;
                 LastRootsPositioned = currerntRootsPositioned;
                 currerntRootsPositioned = new List<RootStruct>();
-            if (_currentRootEntity.connectedResource != null)
+/*            if (_currentRootEntity.connectedResource != null)
             {
-                _currentRootEntity.connectedResource.isCollected = false;
-            }
+                //_currentRootEntity.connectedResource.isCollected = false;
+            }*/
                 _currentRootEntity.connectedResource = resource;
             _currentRootEntity.SetType(resource.pooltype);
             _currentRootEntity.ToggleRange(false);
@@ -126,13 +126,13 @@ using UnityEngine;
             {
                 StartCoroutine(DeletePlacedRoots());
                 isBuildingRoot = false;
-                _currentRootEntity.ToggleRange(false);
+            }
+            _currentRootEntity.ToggleRange(false);
 
-        }
 
     }
 
-        private void OnSrcTargetUpdated(GameObject target)
+    private void OnSrcTargetUpdated(GameObject target)
         {
         if (canBuildRoot)
         {
