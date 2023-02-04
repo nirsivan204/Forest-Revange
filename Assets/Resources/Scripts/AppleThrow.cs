@@ -37,7 +37,7 @@ public class AppleThrow : MonoBehaviour
         isUpper = world == World.Upper;
         if (!isUpper)
         {
-            canThrow = false;
+            //canThrow = false;
         }
     }
 
