@@ -16,6 +16,8 @@ public class AppleThrow : MonoBehaviour
 
     public float maxThrowMagnitute = 2f;
 
+    public ResourceTypes type;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,11 +44,11 @@ public class AppleThrow : MonoBehaviour
             Vector3 endPoint = mouseInputManager.hitPoint;
             if (Vector3.Distance(startPoint, endPoint) > clickDistanceForThrow)
             {
+                // TODO: THROW APPLE OF RIGHT TYPE
                 GameObject newApple = Instantiate(apple, transform.position + new Vector3(0,5,0), transform.rotation, transform.parent);
                 Vector3 dragDirection = Vector3.ClampMagnitude(endPoint - startPoint, maxThrowMagnitute);
                 newApple.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), ForceMode.Impulse);
                 newApple.GetComponent<Rigidbody>().AddForce(dragDirection * -1 + new Vector3(0,dragDirection.magnitude/2,0), ForceMode.Impulse);
-                newApple.GetComponent<AppleDestruction>().level = transform.GetComponent<TreeEntity>().getLevel();
             }
             pullingTree = false;
         }
