@@ -3,7 +3,27 @@ guid: 7244c6d45e4de1d4da4282db50dc46a0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _defaultMat
+    second: {fileID: 2100000, guid: 131b1398111e07e408bd1f3cf8410d12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: border
+    second: {fileID: 2100000, guid: 6335037afb412b34a89d9f1642496003, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door
+    second: {fileID: 2100000, guid: 3389fb98a90385d4cb057ca33ba297c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: window
+    second: {fileID: 2100000, guid: b06fba5f018abc94fb8108ce32ba1895, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +108,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.22999997
+    globalScale: 2.3
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

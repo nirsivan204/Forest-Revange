@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2994902916326764445}
   - component: {fileID: 8353904015267900101}
   m_Layer: 0
-  m_Name: SM_Window_Roof_400
+  m_Name: gas_Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
