@@ -574,6 +574,10 @@ MonoBehaviour:
   boundryCylinder: {fileID: 364772105055704253}
   connectedResource: {fileID: 0}
   type: 0
+  gas: {fileID: 2100000, guid: 27ceff334d19bc24aa99e60600f3c482, type: 2}
+  elec: {fileID: 2100000, guid: f7431bb8e1c79e948b035ab3c28905f5, type: 2}
+  biuv: {fileID: 2100000, guid: 9dce459a59e93bd408ed232180f03f6e, type: 2}
+  waterTree: {fileID: 2100000, guid: 24e14b5e9f37e2d40bee4d4796fdc43f, type: 2}
 --- !u!1 &5996647460000483046
 GameObject:
   m_ObjectHideFlags: 0
