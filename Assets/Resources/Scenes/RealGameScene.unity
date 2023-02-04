@@ -8116,15 +8116,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4623010365533111422, guid: d6f8db56759287d4882afff996859ecf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.761787
+      value: -8.4
       objectReference: {fileID: 0}
     - target: {fileID: 4623010365533111422, guid: d6f8db56759287d4882afff996859ecf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.47296047
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4623010365533111422, guid: d6f8db56759287d4882afff996859ecf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -34.45548
+      value: 15.3
       objectReference: {fileID: 0}
     - target: {fileID: 4623010365533111422, guid: d6f8db56759287d4882afff996859ecf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8295,6 +8295,10 @@ PrefabInstance:
     - target: {fileID: 6077090839592363513, guid: ab4cefae837b0f84fa93079f232d996c, type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102355795197010086, guid: ab4cefae837b0f84fa93079f232d996c, type: 3}
+      propertyPath: pooltype
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab4cefae837b0f84fa93079f232d996c, type: 3}

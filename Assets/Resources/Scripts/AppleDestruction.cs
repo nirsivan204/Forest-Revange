@@ -5,7 +5,10 @@ public class AppleDestruction : MonoBehaviour
 {
     public ResourceTypes resourceType;
     //public ApplePlanter plant;
-    GameObject hitParticle = null; 
+    GameObject hitParticle = null;
+    [SerializeField] GameObject Gas;
+    [SerializeField] GameObject biuv;
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -25,10 +28,10 @@ public class AppleDestruction : MonoBehaviour
             case ResourceTypes.Water:
                 break;
             case ResourceTypes.Gas:
-                hitParticle = (GameObject)Resources.Load("Particle Effects/BigExplosion.prefab");
+                hitParticle = Gas;//(GameObject)Resources.Load("Particle Effects/BigExplosion.prefab");
                 break;
             case ResourceTypes.Sewage:
-                hitParticle = (GameObject)Resources.Load("Particle Effects/SwampBall.prefab");
+                hitParticle = biuv;//(GameObject)Resources.Load("Particle Effects/SwampBall.prefab");
                 break;
             case ResourceTypes.Electricity:
                 break;
@@ -37,7 +40,8 @@ public class AppleDestruction : MonoBehaviour
         if (hitParticle != null)
         {
             Instantiate(hitParticle, this.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(hitParticle.GetComponent<ParticleSystem>().main.duration);
+
+            yield return new WaitForSeconds(1);
         }
         Destroy(this.gameObject);
 

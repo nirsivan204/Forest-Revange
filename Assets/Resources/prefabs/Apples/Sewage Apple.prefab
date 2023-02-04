@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 2
-  plant: {fileID: 0}
+  Gas: {fileID: 0}
+  biuv: {fileID: 100006, guid: 186bb421a571bbe40af7fa4dd48fc870, type: 3}
 --- !u!1001 &2807746259613634423
 PrefabInstance:
   m_ObjectHideFlags: 0
