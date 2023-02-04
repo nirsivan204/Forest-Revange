@@ -38,9 +38,8 @@ public class TreeAnimator : MonoBehaviour
         if (animationTime <= 1)
         {
             animationTime = animationTime + Time.deltaTime;
-            animator.Play(0, 0, animationTime);
-
         }
+        animator.Play(0, 0, animationTime);
         bool pullingTree = appleThrowScript.pullingTree;
         Vector3 startPoint = appleThrowScript.startPoint;
         Vector3 dragDirection = appleThrowScript.dragDirection;
