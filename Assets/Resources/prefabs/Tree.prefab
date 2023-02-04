@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7af92852565424b8ab873c1b8943ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickDistanceForThrow: 3
+  maxClickDistanceToRegisterThrow: 3
+  minDragDistanceToRegisterThrow: 1
   pullingTree: 0
   maxThrowMagnitute: 3
   type: 0

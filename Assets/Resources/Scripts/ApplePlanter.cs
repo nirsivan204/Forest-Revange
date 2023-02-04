@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ApplePlanter : MonoBehaviour
 {
-    public float treeSafeRadius = 5;
+    public float treeSafeRadius = 2;
 
     public float timeForRollingOnGround = 1;
 
