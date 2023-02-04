@@ -8,6 +8,7 @@ public class ApplePlanter : MonoBehaviour
     public float treeSafeRadius = 2;
 
     public float timeForRollingOnGround = 1;
+    public float timeUntilTimeoutBecauseNoPlant = 15;
 
     public bool canBePlanted = true;
 
@@ -37,6 +38,11 @@ public class ApplePlanter : MonoBehaviour
             Vector3 spawnLocation = new Vector3(transform.position.x, 0, transform.position.z);
             Quaternion spawnRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
             Instantiate(Resources.Load<GameObject>("prefabs/TreeParent"),spawnLocation, spawnRotation, GameObject.Find("Under World").transform);
+            Destroy(transform.gameObject);
+        }
+        timeUntilTimeoutBecauseNoPlant = timeUntilTimeoutBecauseNoPlant - Time.deltaTime;
+        if(timeUntilTimeoutBecauseNoPlant <= 0)
+        {
             Destroy(transform.gameObject);
         }
     }
