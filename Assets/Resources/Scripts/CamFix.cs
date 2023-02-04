@@ -38,7 +38,7 @@ public class CamFix : MonoBehaviour
         {
             Drag();
         }
-        print(Input.GetAxis("Mouse ScrollWheel"));
+        //print(Input.GetAxis("Mouse ScrollWheel"));
         if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.03f)
         {
             zoomSize -= zoomSpeed * Mathf.Sign(Input.GetAxis("Mouse ScrollWheel"));

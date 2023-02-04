@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ApplePlanter : MonoBehaviour
 {
-    public float treeSafeRadius = 5;
+    public float treeSafeRadius = 2;
 
     public float timeForRollingOnGround = 1;
+
+    public bool canBePlanted = true;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,7 @@ public class ApplePlanter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeForRollingOnGround <= 0)
+        if(timeForRollingOnGround <= 0 && canBePlanted)
         {
             // Check if near tree or sapling
             Collider[] nearbys = Physics.OverlapSphere(transform.position, treeSafeRadius);

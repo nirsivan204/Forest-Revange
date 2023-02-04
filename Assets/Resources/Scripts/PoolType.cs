@@ -5,5 +5,5 @@ using UnityEngine;
 public class PoolType : MonoBehaviour
 {
     public ResourceTypes pooltype = ResourceTypes.Water;
-    public bool isCollected = false;
+//    public bool isCollected = false;
 }

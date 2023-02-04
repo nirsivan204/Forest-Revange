@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class AppleThrow : MonoBehaviour
 {
-    public float clickDistanceForThrow = 1;
-    
+    public float maxClickDistanceToRegisterThrow = 1;
+    public float minDragDistanceToRegisterThrow = 1;
+
     private MouseInputManager mouseInputManager;
 
     public bool pullingTree = false;
 
-    private Vector3 startPoint;
+    public Vector3 startPoint;
 
     private GameObject apple;
 
@@ -31,7 +32,8 @@ public class AppleThrow : MonoBehaviour
         if(mouseInputManager.isDrawingLine && !pullingTree)
         {
             startPoint = mouseInputManager.hitPoint;
-            if(Vector3.Distance(startPoint, transform.position) <= clickDistanceForThrow)
+            Vector3 treePositionOnOffsetPlane = new Vector3(transform.position.x, 5, transform.position.z);
+            if(Vector3.Distance(startPoint, treePositionOnOffsetPlane) <= maxClickDistanceToRegisterThrow)
             {
                 pullingTree = true;
             }
@@ -41,7 +43,7 @@ public class AppleThrow : MonoBehaviour
         if (!mouseInputManager.isDrawingLine && pullingTree)
         {
             Vector3 endPoint = mouseInputManager.hitPoint;
-            if (Vector3.Distance(startPoint, endPoint) > clickDistanceForThrow)
+            if (Vector3.Distance(startPoint, endPoint) > minDragDistanceToRegisterThrow)
             {
                 // TODO: THROW APPLE OF RIGHT TYPE
                 switch (type)
