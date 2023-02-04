@@ -4,24 +4,12 @@ public class AppleDestruction : MonoBehaviour
 {
     public ResourceTypes resourceType;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         string powerString = powerToString();
-        if(collision.gameObject.name.IndexOf(powerString) != -1)
+        if (collision.gameObject.name.IndexOf(powerString) != -1)
         {
-            // TODO: destruct the collision object
+            Destroy(collision.gameObject);
         }
     }
 
@@ -32,7 +20,7 @@ public class AppleDestruction : MonoBehaviour
             case ResourceTypes.Sewage:
                 return "sewage";
             case ResourceTypes.Electricity:
-                return "gas";
+                return "electricity";
             case ResourceTypes.Water:
                 return "water";
         }
