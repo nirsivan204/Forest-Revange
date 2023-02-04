@@ -52,6 +52,7 @@ public class TreeEntity : MonoBehaviour
         //GameObject.Find("GameManager").GetComponent<GameManager>().ChangeDimension();
         if (!isUpgraded)
         {
+            StartCoroutine(CreateDustParticleEffect());
             Destroy(seedling);
             isUpgraded = true;
         }
@@ -63,5 +64,12 @@ public class TreeEntity : MonoBehaviour
     public void ToggleRange(bool state)
     {
         bounderies.SetActive(state);
+    }
+
+    public IEnumerator CreateDustParticleEffect()
+    {
+        GameObject dustEffect = Instantiate((GameObject)Resources.Load("Particle Effects/DustSmoke_A"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameManager.Instance.UpperWorld.transform);
+        yield return new WaitForSeconds(1);
+        Destroy(dustEffect);
     }
 }
