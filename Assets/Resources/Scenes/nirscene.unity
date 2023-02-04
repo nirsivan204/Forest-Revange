@@ -655,6 +655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 8102355795197010086, guid: ab4cefae837b0f84fa93079f232d996c, type: 3}
+      propertyPath: pooltype
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab4cefae837b0f84fa93079f232d996c, type: 3}
 --- !u!1001 &1784972334
@@ -740,6 +744,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5996647459222381896, guid: 5beacb14e0f8927468cf2c104ea622cc, type: 3}
+      propertyPath: gas
+      value: 
+      objectReference: {fileID: 2100000, guid: 27ceff334d19bc24aa99e60600f3c482, type: 2}
+    - target: {fileID: 5996647459222381896, guid: 5beacb14e0f8927468cf2c104ea622cc, type: 3}
+      propertyPath: biuv
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dce459a59e93bd408ed232180f03f6e, type: 2}
+    - target: {fileID: 5996647459222381896, guid: 5beacb14e0f8927468cf2c104ea622cc, type: 3}
+      propertyPath: elec
+      value: 
+      objectReference: {fileID: 2100000, guid: f7431bb8e1c79e948b035ab3c28905f5, type: 2}
+    - target: {fileID: 5996647459222381896, guid: 5beacb14e0f8927468cf2c104ea622cc, type: 3}
+      propertyPath: waterTree
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e14b5e9f37e2d40bee4d4796fdc43f, type: 2}
     - target: {fileID: 5996647459222381897, guid: 5beacb14e0f8927468cf2c104ea622cc, type: 3}
       propertyPath: m_RootOrder
       value: 3

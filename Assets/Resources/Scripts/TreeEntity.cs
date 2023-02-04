@@ -14,6 +14,12 @@ public class TreeEntity : MonoBehaviour
     internal bool connected;
     public PoolType connectedResource;
     public ResourceTypes type;
+    [SerializeField] Material gas;
+    [SerializeField] Material elec;
+    [SerializeField] Material biuv;
+    [SerializeField] Material waterTree;
+
+
 
     public void Start()
     {
@@ -60,6 +66,26 @@ public class TreeEntity : MonoBehaviour
         }
         tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameManager.Instance.UpperWorld.transform);
         tree.GetComponent<AppleThrow>().type = type;
+        switch (type)
+        {
+            case ResourceTypes.Water:
+                tree.GetComponentInChildren<SkinnedMeshRenderer>().material = waterTree;
+                break;
+            case ResourceTypes.Gas:
+                //tree.GetComponentInChildren<SkinnedMeshRenderer>().material = (Material)Resources.Load("Tree revenger/Tree revenger Gas MAT.mat");
+                tree.GetComponentInChildren<SkinnedMeshRenderer>().material = gas;
+                break;
+            case ResourceTypes.Sewage:
+                tree.GetComponentInChildren<SkinnedMeshRenderer>().material = biuv;//(Material)Resources.Load("Tree revenger/Tree revenger Sewage MAT.mat");
+
+                break;
+            case ResourceTypes.Electricity:
+                tree.GetComponentInChildren<SkinnedMeshRenderer>().material = elec;//(Material) Resources.Load("Tree revenger/Tree revenger Electricity MAT.mat");
+                break;
+            default:
+                break;
+        }
+
         Debug.Log("UPGRADE");
     }
 
