@@ -5,40 +5,59 @@ using UnityEngine;
 
 public class TreeEntity : MonoBehaviour
 {
-    float _connectedWaterAmount = 0;
-    int _level = 0;
+    bool isUpgraded = false;
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
+    [SerializeField] GameObject bounderies;
+    internal bool connected;
+    public PoolType connectedResource;
+    public ResourceTypes type;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        GameManager.changeWorldsEvent += OnChangeWorld;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnChangeWorld(World world)
     {
-        
-    }
-
-
-    public void AddWater(float amount)
-    {
-        _connectedWaterAmount += amount;
-        if(_level==0 && amount > Params.WaterToGrow)
+        if(seedling != null)
         {
-            UpgradeTree();
+            seedling.SetActive(world == World.Upper);
         }
+    }
+
+    private void OnDisable()
+    {
+        GameManager.changeWorldsEvent -= OnChangeWorld;
+
+
+    }
+
+
+    public void SetType(ResourceTypes type)
+    {
+        this.type = type;
+        UpgradeTree();
+
     }
 
     private void UpgradeTree()
     {
-        _level++;
-        Destroy(seedling);
-        tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"),transform);
+        //GameObject.Find("GameManager").GetComponent<GameManager>().ChangeDimension();
+        if (!isUpgraded)
+        {
+            Destroy(seedling);
+            isUpgraded = true;
+        }
+        tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameManager.Instance.UpperWorld.transform);
+        tree.GetComponent<AppleThrow>().type = type;
         Debug.Log("UPGRADE");
+    }
 
+    public void ToggleRange(bool state)
+    {
+        bounderies.SetActive(state);
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2660416434344090119}
   m_Layer: 0
   m_Name: Electricity
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b1d2f019e4ace346836d044fed2f4a3, type: 2}
+  - {fileID: 2100000, guid: 890577f6859b3d54899473dacc38b9ed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dab4ba0b286de04f8f6738b664c1be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooltype: 0
+  pooltype: 3
   isCollected: 0
 --- !u!1 &8742849024048328711
 GameObject:

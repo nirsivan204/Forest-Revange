@@ -8,7 +8,7 @@ public class UpperWorld : AbstractGameGrid
     [SerializeField] GameObject _meshParent;
     protected override void OnWorldChange(World world)
     {
-        if(world == World.Under)
+        if (world == World.Under)
         {
             SetInvisible(true);
         }
