@@ -40,6 +40,9 @@ public class SoundManager : MonoBehaviour
     {
         isUpper = true;
         upperWorld.Play();
+        underWorld.Play();
+        underWorld.volume = 0;
+
     }
 
     public void PlaySFX(AudioClip clip)
@@ -51,7 +54,7 @@ public class SoundManager : MonoBehaviour
         Transition = world == World.Upper ? upperToUnder : underToUpper;
         PlaySFX(Transition);
         isUpper = !isUpper;
-        StopAllCoroutines();
+       // StopAllCoroutines();
 
         StartCoroutine(FadeTrack());
     }
@@ -72,7 +75,6 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            underWorld.Play();
             while (timeElapsed < timeToFade)
             {
                 upperWorld.volume = Mathf.Lerp(1, 0, timeElapsed / timeToFade);
