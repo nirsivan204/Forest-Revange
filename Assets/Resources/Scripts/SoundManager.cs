@@ -55,8 +55,6 @@ public class SoundManager : MonoBehaviour
         Transition = world == World.Upper ? upperToUnder : underToUpper;
         PlaySFX(Transition);
         isUpper = !isUpper;
-       // StopAllCoroutines();
-
         StartCoroutine(FadeTrack());
     }
     private IEnumerator FadeTrack()
