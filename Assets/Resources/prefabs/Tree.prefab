@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6002967774173596918}
   - component: {fileID: 6769292187602050148}
+  - component: {fileID: 6465339865490718087}
   - component: {fileID: 6532333771988568093}
   - component: {fileID: 8204413518101734732}
   - component: {fileID: 9097409270057943919}
@@ -57,6 +58,18 @@ MonoBehaviour:
   pullingTree: 0
   maxThrowMagnitute: 3
   type: 0
+--- !u!114 &6465339865490718087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6002967774173596919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ab03ab21e821f4e86bb5d437e8d832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &6532333771988568093
 CapsuleCollider:
   m_ObjectHideFlags: 0

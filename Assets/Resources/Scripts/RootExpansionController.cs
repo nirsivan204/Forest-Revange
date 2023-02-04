@@ -180,7 +180,7 @@ using UnityEngine;
                 {
                     Vector2 pos = Vector3ToVector2(MouseInputManager.Instance.hitPoint);// new Vector2(MouseInputManager.Instance.hitPoint.x, MouseInputManager.Instance.hitPoint.z);
                     UpdateRoot(pos);
-                    Debug.Log(pos);
+                    //Debug.Log(pos);
                 }
 /*                else
                 {
