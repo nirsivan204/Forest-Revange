@@ -1302,6 +1302,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7079843147574928389, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
+      propertyPath: near clip plane
+      value: -70
+      objectReference: {fileID: 0}
     - target: {fileID: 7079843147574928391, guid: 063a790fda07e13478ce49242e7f001e, type: 3}
       propertyPath: m_Name
       value: Main Camera
