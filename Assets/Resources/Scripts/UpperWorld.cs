@@ -10,16 +10,16 @@ public class UpperWorld : AbstractGameGrid
     {
         if (world == World.Under)
         {
-            SetInvisible(true);
+        //    SetInvisible(true);
         }
         else
         {
-            SetInvisible(false);
+        //    SetInvisible(false);
         }
     }
 
     private void SetInvisible(bool v)
     {
-        _meshParent.SetActive(!v);
+        //_meshParent.SetActive(!v);
     }
 }
