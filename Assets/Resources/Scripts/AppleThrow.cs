@@ -107,10 +107,16 @@ public class AppleThrow : MonoBehaviour
                             break;
                     }
 
+                    int electricityAppleModifier = 1;
+                    if(type == ResourceTypes.Electricity)
+                    {
+                        electricityAppleModifier = 2;
+                    }
+
                     GameObject newApple = Instantiate(apple, transform.position + new Vector3(0, 5, 0), transform.rotation, transform.parent);
                     dragDirection = Vector3.ClampMagnitude(endPoint - startPoint, maxThrowMagnitute);
                     newApple.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), ForceMode.Impulse);
-                    newApple.GetComponent<Rigidbody>().AddForce(dragDirection * -1 + new Vector3(0, dragDirection.magnitude / 2, 0), ForceMode.Impulse);
+                    newApple.GetComponent<Rigidbody>().AddForce(dragDirection * -1 *electricityAppleModifier + new Vector3(0, dragDirection.magnitude / 2, 0), ForceMode.Impulse);
                     SoundManager.instance.PlaySFX(appleThrowSound);
 
                 }
