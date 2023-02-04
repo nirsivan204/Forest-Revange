@@ -10,6 +10,7 @@ public class AppleDestruction : MonoBehaviour
         if (collision.gameObject.name.IndexOf(powerString) != -1)
         {
             Destroy(collision.gameObject);
+            //make effect
         }
         else
         {
