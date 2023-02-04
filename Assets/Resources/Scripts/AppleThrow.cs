@@ -23,7 +23,6 @@ public class AppleThrow : MonoBehaviour
     void Start()
     {
         mouseInputManager = GameObject.Find("Mouse Input Manager").gameObject.GetComponent<MouseInputManager>();
-        apple = Resources.Load<GameObject>("prefabs/Apple");
     }
 
     // Update is called once per frame
@@ -45,6 +44,22 @@ public class AppleThrow : MonoBehaviour
             if (Vector3.Distance(startPoint, endPoint) > clickDistanceForThrow)
             {
                 // TODO: THROW APPLE OF RIGHT TYPE
+                switch (type)
+                {
+                    case ResourceTypes.Gas:
+                        apple = Resources.Load<GameObject>("prefabs/Apples/Gas Apple");
+                        break;
+                    case ResourceTypes.Sewage:
+                        apple = Resources.Load<GameObject>("prefabs/Apples/Sewage Apple");
+                        break;
+                    case ResourceTypes.Electricity:
+                        apple = Resources.Load<GameObject>("prefabs/Apples/Electricity Apple");
+                        break;
+                    case ResourceTypes.Water:
+                        apple = Resources.Load<GameObject>("prefabs/Apples/Water Apple");
+                        break;
+                }
+
                 GameObject newApple = Instantiate(apple, transform.position + new Vector3(0,5,0), transform.rotation, transform.parent);
                 Vector3 dragDirection = Vector3.ClampMagnitude(endPoint - startPoint, maxThrowMagnitute);
                 newApple.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f)), ForceMode.Impulse);
