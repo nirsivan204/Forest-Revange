@@ -31,6 +31,7 @@ using UnityEngine;
 
         bool isUnderWorld = false;
         bool isBuildingRoot = false;
+    bool canBuildRoot = true;
 
         List<RootStruct> LastRootsPositioned = new List<RootStruct>();
         List<RootStruct> currerntRootsPositioned = new List<RootStruct>();
@@ -133,16 +134,20 @@ using UnityEngine;
 
         private void OnSrcTargetUpdated(GameObject target)
         {
-            //if (!isBuildingRoot && MouseInputManager.Instance.isDrawingLine && MouseInputManager.Instance.target && MouseInputManager.Instance.target.tag == "UnderTree")
-            if(target.tag == "UnderTree" && isUnderWorld)
+        if (canBuildRoot)
+        {
+            if (target.tag == "UnderTree" && isUnderWorld)
             {
                 currentRoot = target;
-            _currentRootEntity = target.GetComponentInParent<TreeEntity>();
+                _currentRootEntity = target.GetComponentInParent<TreeEntity>();
                 treePosition = Vector3ToVector2(currentRoot.transform.position);// new Vector2(tree.transform.position.x, tree.transform.position.z);
                 lastPlacedRootPosition = treePosition;
                 isBuildingRoot = true;
                 _currentRootEntity.ToggleRange(true);
+            }
         }
+            //if (!isBuildingRoot && MouseInputManager.Instance.isDrawingLine && MouseInputManager.Instance.target && MouseInputManager.Instance.target.tag == "UnderTree")
+
 
         }
 
@@ -212,6 +217,7 @@ using UnityEngine;
 
         IEnumerator DeletePlacedRoots(bool isCurrent = true)
         {
+        canBuildRoot = false;
         var rootsToDelete = isCurrent ? currerntRootsPositioned : LastRootsPositioned;
 
             for (int i = rootsToDelete.Count-1; i >= 0; i--)
@@ -228,6 +234,7 @@ using UnityEngine;
                 yield return waitCache;
             }
             rootsToDelete.Clear();
+        canBuildRoot = true;
         }
 
         private void CreateRoot(Vector2 position)
