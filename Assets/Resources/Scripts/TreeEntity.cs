@@ -9,6 +9,7 @@ public class TreeEntity : MonoBehaviour
     [SerializeField] GameObject root;
     [SerializeField] GameObject seedling;
     [SerializeField] GameObject tree;
+    [SerializeField] GameObject bounderies;
     internal bool connected;
     public PoolType connectedResource;
     public ResourceTypes type;
@@ -53,5 +54,10 @@ public class TreeEntity : MonoBehaviour
         tree = Instantiate((GameObject)Resources.Load("prefabs/Tree"), new Vector3(transform.position.x, 0, transform.position.z), transform.rotation, GameManager.Instance.UpperWorld.transform);
         tree.GetComponent<AppleThrow>().type = type;
         Debug.Log("UPGRADE");
+    }
+
+    public void ToggleRange(bool state)
+    {
+        bounderies.SetActive(state);
     }
 }
