@@ -59,7 +59,7 @@ MonoBehaviour:
   minDragDistanceToRegisterThrow: 1
   pullingTree: 0
   startPoint: {x: 0, y: 0, z: 0}
-  maxThrowMagnitute: 5
+  maxThrowMagnitute: 7
   type: 0
   dragDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6465339865490718087
