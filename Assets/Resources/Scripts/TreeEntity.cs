@@ -23,7 +23,7 @@ public class TreeEntity : MonoBehaviour
 
     public void Start()
     {
-        bounderies.transform.localScale = new Vector3(RootExpansionController.Instance.maxExpansionDistance, bounderies.transform.localScale.y, RootExpansionController.Instance.maxExpansionDistance);
+        bounderies.transform.localScale = new Vector3(RootExpansionController.Instance.maxExpansionDistance*2, bounderies.transform.localScale.y, RootExpansionController.Instance.maxExpansionDistance*2);
     }
     private void OnEnable()
     {

@@ -14,7 +14,7 @@ public class MouseInputManager : MonoBehaviour
     public bool isDrawingLine;
     public Vector3 hitPoint;
 
-    [SerializeField] float underWorldHeight = -1;
+    [SerializeField] float underWorldHeight = -0.5f;//-1f;
     [SerializeField] float upperWorldHeight = 0;
     Plane _upperWorldPlane;
     Plane _underWorldPlane;
