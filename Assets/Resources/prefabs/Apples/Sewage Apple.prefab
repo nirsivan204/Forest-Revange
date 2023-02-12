@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 2
   Gas: {fileID: 0}
-  biuv: {fileID: 100006, guid: 186bb421a571bbe40af7fa4dd48fc870, type: 3}
+  biuv: {fileID: 100008, guid: 9034197d2cfd65e41961e8cc67d39073, type: 3}
 --- !u!1001 &2807746259613634423
 PrefabInstance:
   m_ObjectHideFlags: 0

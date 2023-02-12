@@ -40,7 +40,6 @@ public class AppleDestruction : MonoBehaviour
         if (hitParticle != null)
         {
             GameObject clone =  Instantiate(hitParticle, this.transform.position, Quaternion.identity);
-
             yield return new WaitForSeconds(0.5f);
             Destroy(clone);
         }
